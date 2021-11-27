@@ -1,0 +1,114 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	left: 0;
+	right: 0;
+	top: 0;
+	position: absolute;
+}
+
+.header > div{
+	flex: 1;
+}
+
+.header > .banner_box{
+	flex: 6;
+}
+
+.logo_box {
+	padding: 10px 25px;
+	display: flex;
+}
+
+.logo_icon {
+	display: block;
+	background: url("/logo_favicon.svg");
+	width: 5rem;
+	height: 5rem;
+	background-position: center;
+	background-size: cover;
+}
+
+
+.user_box{
+	min-width: 75px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.login_btn{
+	padding: 10px 25px;
+	background: transparent;
+	border-radius: 12px 0 0 12px;
+	cursor: pointer;
+}
+
+.presale_btn{
+	display: flex;
+	align-items: center;
+	text-decoration: none !important;
+	color: $black-9 !important;
+}
+
+.login_btn:hover,
+.login_btn:focus{
+	background: $white-9;
+};
+
+
+.flash_icon{
+	display: block;
+	background: url("/icons/flash.svg");
+	width: 2rem;
+	height: 2rem;
+	padding: 0.5em;
+	border-radius: 50%;
+	background-position: center;
+	background-size: cover;
+}
+
+.login_icon{
+	display: block;
+	background: url("/icons/personal.svg");
+	width: 2rem;
+	height: 2rem;
+	padding: 0.5em;
+	border-radius: 50%;
+	background-position: center;
+	background-size: cover;
+}
+
+.logout_icon{
+	display: block;
+	background: url("/icons/wallet.svg");
+	width: 2rem;
+	height: 2rem;
+	padding: 0.5em;
+	border-radius: 50%;
+	background-position: center;
+	background-size: cover;
+}
+
+
+/* SMALL SCREENS */
+
+@media only screen and (max-width: 767.98px) {
+	
+	.logo_icon{
+		width: 2.5rem;
+    	height: 2.5rem;
+	}
+
+	.logo_box{
+		padding: 10px 10px;
+	}
+
+	.presale_btn{
+		padding: 10px 10px;
+	}
+
+	.flash_text{
+		display: none;
+	}
+}

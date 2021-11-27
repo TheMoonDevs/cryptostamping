@@ -1,0 +1,91 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.wrapper{
+  	background: $white;
+}
+
+.page_container{
+	display: block;
+	position: relative;
+	z-index: 0;
+	background: $white;
+}
+
+.page_container.hide_page{
+	display: none;
+}
+
+.icon {
+	display: block;
+	width: 1.5em;
+	height: 1.5em;
+	background-position: center !important;
+	background-size: cover !important;
+}
+
+.popup-content {
+  left: $sidebar-width;
+}
+
+.not_link{
+	outline: none !important;
+	text-decoration: none !important;
+}
+
+/* OTHER */
+
+
+.hide_scroll {
+  //-ms-overflow-style: none;
+  box-sizing: border-box;
+  -ms-overflow-style: none; /* IE 11 */
+  scrollbar-width: none; /* Firefox 64 */
+}
+
+.hide_scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.hide_scroll::-webkit-scrollbar-track {
+  display: none;
+}
+
+.hide_scroll::-webkit-scrollbar-thumb {
+  display: none;
+}
+
+.hide_scroll::-webkit-scrollbar-thumb:hover {
+  display: none;
+}
+
+.hidden {
+  overflow: hidden;
+}
+
+.overlay {
+  overflow: overlay;
+}
+
+.unselectable {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+

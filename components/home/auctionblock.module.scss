@@ -1,0 +1,349 @@
+.container{
+	display: block;
+	overflow-x: hidden;
+}
+
+.screen_one_empty{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 500px;
+}
+
+.screen_one_content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 500px;
+	// animation: insetInAnime 0.33s ease;
+}
+
+@keyframes insetInAnime {
+	0% {
+		transform: translateX(40%);
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(0%);
+		opacity: 1;
+	}
+}
+
+.stamp_display_vid {
+	display: flex;
+	width: 450px;
+	height: 450px;
+	margin-right: 5%;
+	overflow-x: hidden !important;
+	scroll-behavior: smooth;
+}
+
+.video{
+	width: 100%;
+	height: 100%;
+}
+
+.stamp_release_info{
+	display: block;
+	// width: 400px;
+	max-width: 400px;
+	min-height: 360px;
+}
+
+
+.stamp_title_info{
+	display: none;
+	margin: 0 0px;
+	width: 400px;
+	min-height: 300px;
+}
+
+.number_box {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.stamp_number {
+	flex-basis:60%;
+	margin-bottom: 0;
+	font-family: 'Racing Sans One', cursive;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 40px;
+	letter-spacing: 0em;
+	margin-right: 20px;
+	display: block;
+	position: relative;
+}
+
+.primetag{
+	font-size: 12px;
+	line-height: 12px;
+	background: $yellow;
+	padding: 4px 6px;
+	border-radius: 50%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin-bottom: 0;
+	cursor: pointer;
+}
+
+.navigation_btn {
+	display: block;
+	cursor: pointer;
+	padding: 10px 10px;
+	opacity: 0.15;
+}
+
+
+.navigation_btn.active {
+	opacity: 1;
+}
+
+.navigation_icon {
+	display: block;
+	width: 30px;
+	height: 15px;
+	background: url("/icons/left_arrow.svg");
+	background-position: center;
+	background-size: cover;
+}
+
+.navigation_btn:hover{
+	opacity: 1;
+}
+
+.navigation_icon.right {
+	transform: rotate(180deg);
+}
+
+.release_box {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	margin: 10px 0;
+}
+
+.release_date {
+	font-family: 'Racing Sans One', cursive;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	margin-bottom: 0;
+	padding-right: 20px;
+	margin-right: 20px;
+	border-right: 1px solid $white-8;
+}
+
+.current_availability {
+	font-family: 'Quicksand', sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: $black-8;
+	margin-bottom: 0;
+	padding-right: 20px;
+	margin-right: 20px;
+	border-right: 1px solid $white-8;
+	display: flex;
+	align-items: center;
+}
+
+.description{
+	margin: 40px 0;
+	font-family: 'Roboto', sans-serif;
+	color: $black-7;
+	border-right: none;
+}
+
+.rarible_link{
+	font-family: 'Roboto', sans-serif;
+	font-style: normal;
+	font-weight: 900;
+	font-size: 16px;
+	color: $black-8;
+	margin-bottom: 0;
+	outline: none !important;
+	opacity: 0.85;
+	color: $skyblue !important;
+	text-decoration: 1px underline $skyblue !important;
+	cursor: pointer;
+}
+
+.rarible_link.normal{
+	font-weight: normal;
+}
+
+.rarible_link.red{
+	color: $red !important;
+	text-decoration: 1px underline $red !important;
+}
+
+.rarible_link.yellow{
+	color: $gold !important;
+	text-decoration: 1px underline $gold !important;
+}
+
+.stamp_title{
+	font-family: 'Raleway', sans-serif;
+	font-style: italic;
+	font-weight: 500;
+	font-size: 16px;
+	margin-bottom: 20px;
+}
+
+.stamp_descr{
+	font-family: 'Quicksand', sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 2em;
+	min-height: 4em;
+	color: $black-8;
+	margin-bottom: 0;
+}
+
+.eth_icon{
+  display: block;
+  width: 10px;
+  height: 16px;
+  margin-right: 8px;
+  background: url("/icons/etherium.svg");
+  background-position: center;
+  background-size: cover;
+}
+
+.border_none{
+	border: none;
+	margin-right: 0;
+	white-space: nowrap;
+}
+
+.item_card{
+	display: block;
+	padding: 6px 14px;
+	margin-right: 10px;
+	box-shadow: 2px 2px 8px 4px rgba(0, 0, 0, 0.09);
+	background: $white;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+.item_text{
+	font-family: 'Roboto', sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 2em;
+	color: $black-8;
+	margin-bottom: 0;
+}
+
+
+
+/* SMALL SCREENS */
+
+@media only screen and (max-width: 767.98px) {
+	.screen_one_content{
+		flex-wrap: wrap;
+	}
+
+	.stamp_display_vid{
+		width: 100%;
+		height: auto;
+		min-height: 100vw;
+		margin-right: 0;
+	}
+
+	.video{
+		width: 100vw;
+	}
+
+	.stamp_release_info{
+		width: 85%;
+		min-height: unset;
+	}
+
+	.stamp_number{
+		font-size: 30px;
+	}
+
+	.number_box{
+		margin-bottom: 10px;
+		justify-content: center;
+	}
+
+	.release_box{
+		justify-content: center;
+	}
+
+	.release_date,
+	.current_availability,
+	.rarible_link{
+		font-size: 13px;
+		margin-right: 10px;
+		padding-right: 10px;
+	}
+
+	.description{
+		font-size: 14px;
+		margin-bottom: 20px;
+		padding-right: 0;
+		margin-right: 0;
+	}
+
+	.stamp_descr{
+		font-size: 13px;
+	}
+}
+
+/* MEDIUM SCREENS */
+
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+	
+	.screen_one_content {
+		min-height: 400px;
+	}
+
+	.stamp_display_vid{
+		width: 40%;
+		height: auto;
+	}
+
+	.stamp_release_info{
+		max-width: 45%;
+	}
+
+	.stamp_number{
+		font-size: 30px;
+	}
+
+	.number_box{
+		margin-bottom: 10px;
+	}
+
+	.release_date,
+	.current_availability,
+	.rarible_link{
+		font-size: 14px;
+	}
+
+	.description{
+		font-size: 13.5px;
+		margin-bottom: 20px;
+	}
+
+	.stamp_descr{
+		font-size: 13.5px;
+	}
+}
+
+/* LARGE SCREENS */
+
+@media only screen and (min-width: 992px) and (max-width: 1199.98px) {
+	
+}
+

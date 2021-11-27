@@ -1,0 +1,32 @@
+{
+  "name": "cryptostamping-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.6.2",
+    "@walletconnect/web3-provider": "^1.6.6",
+    "axios": "^0.23.0",
+    "moralis": "0.0.104",
+    "next": "11.1.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-moralis": "^0.2.6",
+    "react-redux": "^7.2.5",
+    "react-window": "^1.8.6",
+    "reactjs-popup": "^2.0.5",
+    "sass": "^1.43.3",
+    "swr": "^1.0.1",
+    "web3": "^1.6.0"
+  },
+  "devDependencies": {
+    "electron": "^15.3.0",
+    "eslint": "8.0.1",
+    "eslint-config-next": "11.1.2"
+  }
+}

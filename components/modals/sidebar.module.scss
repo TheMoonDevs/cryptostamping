@@ -1,0 +1,94 @@
+.container {
+	background: rgba(0, 0, 0, 0.4);
+	opacity: 1;
+}
+
+.sidebar {
+	position: fixed;
+	width: 50vw;
+	min-height: 100vh;
+	top: 0;
+	right: 0;
+	background: $white;
+	box-shadow: 4px 4px 4px 8px rgba(0, 0, 0, 0.15);
+	transition: transform 0.33s ease, opacity 0.1s ease;
+	transform: translateX(100%);
+	padding: 0 0;
+	opacity: 0;
+	z-index: 11;
+}
+
+.sidebar.unfixed{
+	position: absolute;
+}
+
+.fixed{
+	position: fixed;
+}
+
+.sidebar.left{
+	transform: translateX(-200%);
+}
+
+.sidebar.fill {
+	width: 100vw;
+}
+
+.sidebar.active {
+	transform: translateX(0%);
+	opacity: 1;
+	//transform: translateX(400);
+}
+
+.icon_btn{
+	padding: 14px 25px;
+	background: transparent;
+	border-radius: 12px 0 0 12px;
+	cursor: pointer;
+}
+
+.icon_btn:hover,
+.icon_btn:focus{
+	background: $white-9;
+};
+
+.icon_btn > span {
+	width: 1.5rem;
+	height: 1.5rem;
+	display: block;
+}
+
+.close_icon{
+	background: url("/icons/close.svg");
+	background-position: center;
+	background-size: cover;
+}
+
+/* SMALL SCREENS */
+
+@media only screen and (max-width: 767.98px) {
+
+	.sidebar {
+		width: 100vw;
+	}
+
+}
+
+/* MEDIUM SCREENS */
+
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+
+	.sidebar {
+		width: 80vw;
+	}
+}
+
+/* LARGE SCREENS */
+
+@media only screen and (min-width: 992px) and (max-width: 1199.98px) {
+
+	.sidebar {
+		width: 80vw;
+	}
+
+}
