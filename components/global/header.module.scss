@@ -5,90 +5,60 @@
 	left: 0;
 	right: 0;
 	top: 0;
-	position: absolute;
+	position: fixed;
+	background: $white;
+	box-shadow: 2px 2px 8px 4px rgba(0, 0, 0, 0.08);
+	padding: 0px 25px;
 }
 
 .header > div{
-	flex: 1;
-}
-
-.header > .banner_box{
-	flex: 6;
-}
-
-.logo_box {
-	padding: 10px 25px;
-	display: flex;
+	//flex: 1;
 }
 
 .logo_icon {
 	display: block;
 	background: url("/logo_favicon.svg");
-	width: 5rem;
-	height: 5rem;
+	width: 4rem;
+	height: 4rem;
 	background-position: center;
 	background-size: cover;
 }
 
 
-.user_box{
-	min-width: 75px;
-	display: flex;
-	justify-content: flex-end;
-}
-
-.login_btn{
-	padding: 10px 25px;
-	background: transparent;
-	border-radius: 12px 0 0 12px;
-	cursor: pointer;
-}
-
-.presale_btn{
+.logo_font{
+	font-family: 'Abril Fatface', cursive;
+	font-size: 20px;
+	font-weight: 400;
+	color: $black !important;
 	display: flex;
 	align-items: center;
 	text-decoration: none !important;
-	color: $black-9 !important;
+	padding: 30px 0;
 }
 
-.login_btn:hover,
-.login_btn:focus{
-	background: $white-9;
-};
-
-
-.flash_icon{
-	display: block;
-	background: url("/icons/flash.svg");
-	width: 2rem;
-	height: 2rem;
-	padding: 0.5em;
-	border-radius: 50%;
-	background-position: center;
-	background-size: cover;
+.buttons{
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
 }
 
-.login_icon{
-	display: block;
-	background: url("/icons/personal.svg");
-	width: 2rem;
-	height: 2rem;
-	padding: 0.5em;
-	border-radius: 50%;
-	background-position: center;
-	background-size: cover;
+.button_font{
+	cursor: pointer;
+	font-family: 'Raleway', cursive;
+	font-size: 16px;
+	font-weight: 500;
+	color: $black;
+	display: flex;
+	align-items: center;
+	text-decoration: none !important;
+	padding: 0 30px;
 }
 
-.logout_icon{
-	display: block;
-	background: url("/icons/wallet.svg");
-	width: 2rem;
-	height: 2rem;
-	padding: 0.5em;
-	border-radius: 50%;
-	background-position: center;
-	background-size: cover;
+.button_font:hover,
+.button_font:focus{
+	color: $darkblue;
 }
+
 
 
 /* SMALL SCREENS */
@@ -100,15 +70,4 @@
     	height: 2.5rem;
 	}
 
-	.logo_box{
-		padding: 10px 10px;
-	}
-
-	.presale_btn{
-		padding: 10px 10px;
-	}
-
-	.flash_text{
-		display: none;
-	}
 }

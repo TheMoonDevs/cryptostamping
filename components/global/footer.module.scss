@@ -3,68 +3,29 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding: 100px 0 0 0;
-	background: $black-11;
-}
-
-.four_title{
-	font-family: 'Quicksand', sans-serif;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 36px;
-	color: $white;
-	margin-bottom: 30px;
-	padding: 24px 0;
-	max-width: 65%;
-	text-align: center;
-}
-
-.add_stamp{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 30px;
-	height: 90px;
-	padding: 30px;
-	border: 2px solid $white;
-	border-radius: 12px;
-	cursor: pointer;
-}
-
-.add_icon{
-	display: block;
-	min-width: 32px;
-	min-height: 32px;
-	background: url("/icons/add_minimal.svg");
-	background-position: center;
-	background-size: cover;
-	opacity: 0;
-	filter: $f-white;
-	transform: scale(0.9,0.9);
-	transition: opacity 0.33s ease, transform 0.33s ease;
-}
-
-.add_stamp:hover .add_icon{
-	opacity: 1;
-	transform: scale(1,1);
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
 }
 
 .social_links{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 60px 0 20px 0;
+	margin-bottom: 10px;
 }
 
 .link_text{
+	flex: 1;
 	font-family: 'Roboto', sans-serif;
 	font-style: normal;
-	font-weight: 300;
+	font-weight: 400;
 	font-size: 16px;
-	color: $white-8 !important;
+	color: $black-8 !important;
 	padding: 0 8px;
 	text-align: center;
-	text-decoration: underline $white-8 !important;
+	text-decoration: underline $black !important;
 	opacity: 0.5;
 }
 

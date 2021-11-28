@@ -37,6 +37,7 @@ function Layout(props) {
     isUnauthenticated,
     isInitialized,
     user,
+    auth,
   } = useMoralis();
 
   useEffect(() => {
@@ -53,52 +54,19 @@ function Layout(props) {
     return () => {
       window?.ethereum?.removeListener("disconnect", handleDisconnect);
     };
-  }, [isLoggedIn]);
+  }, [isLoggedIn, logout]);
 
   useEffect(() => {
-    if (!window.ethereum) {
+    if (!window.ethereum.selectedAddress || !user || !isLoggedIn) {
       return;
     }
-    if (!user && localStorage.getItem("default_account") == null) {
-      return;
-    }
+    localStorage.setItem("selected_address", window.ethereum.selectedAddress);
     const handleAccounts = (accounts) => {
       if (accounts.length <= 0) return;
       if (user && user.attributes.accounts.includes(accounts[0])) {
         return;
       }
-      const default_account = localStorage.getItem("default_account");
-      if (default_account && accounts[0] === default_account) {
-        return;
-      }
-      if (!user) {
-        alert(
-          "Please signin with your default account before you can connect this account!"
-        );
-        return;
-      }
-    };
-    window.ethereum.removeListener("accountsChanged", handleAccounts);
-    window.ethereum.on("accountsChanged", handleAccounts);
-    return () => {
-      window.ethereum.removeListener("accountsChanged", handleAccounts);
-    };
-  }, [user]);
-
-  useEffect(() => {
-    if (!window.ethereum) {
-      return;
-    }
-    const handleAccounts = (accounts) => {
-      if (!window.ethereum.selectedAddress) {
-        logout();
-        return;
-      }
-      localStorage.setItem("selected_address", window.ethereum.selectedAddress);
-      if (!isLoggedIn) return;
-      if (user && user.attributes.accounts.includes(accounts[0])) {
-        return;
-      }
+      // get confirmation and link this account too.
       if (window.confirm("Confirm to connect this account too?")) {
         Moralis.link(window.ethereum.selectedAddress)
           .then(() => {
@@ -107,8 +75,6 @@ function Layout(props) {
           .catch(() => {
             dispatch(setTopLoading(false));
           });
-      } else {
-        return;
       }
     };
     window.ethereum.removeListener("accountsChanged", handleAccounts);
@@ -116,7 +82,18 @@ function Layout(props) {
     return () => {
       window.ethereum.removeListener("accountsChanged", handleAccounts);
     };
-  }, [isLoggedIn, user]);
+  }, [user, isLoggedIn, Moralis]);
+
+  useEffect(() => {
+    if (auth.state === "error" || auth.state === "unauthenticated") {
+      dispatch(setLoggedIn(false));
+      dispatch(setTopLoading(false));
+    }
+    if (auth.state === "authenticated") {
+      dispatch(setLoggedIn(true));
+      dispatch(setTopLoading(false));
+    }
+  }, [auth]);
 
   return (
     <div>

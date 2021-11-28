@@ -17,64 +17,30 @@ function Header({ dispatch, Moralis, authenticate }) {
 	const handleLogin = () => {
 		if (isLoggedIn) return;
 		const default_account = localStorage.getItem("default_account");
-		if (
-			default_account &&
-			window.ethereum.selectedAddress &&
-			default_account !== window.ethereum.selectedAddress
-		) {
-			alert(
-				"please signin with your default account before you can connect this account!"
-			);
-			return;
-		}
 		dispatch(setTopLoading(true));
 		const signingMessage =
-			'Welcome to Cut Outs! \n\n Click "Sign" to sign in. No password needed! \n\nThis request will not trigger a blockchain transaction or cost any gas fees.';
-		authenticate({ signingMessage })
-			.then(function (response) {
-				if (window.ethereum.selectedAddress)
-					localStorage.setItem(
-						"default_account",
-						window.ethereum.selectedAddress
-					);
-			})
-			.catch(function () {
-				dispatch(setTopLoading(false));
-			});
-	};
-
-	const openWallet = () => {
-		if (isLoggedIn)
-			dispatch(setSidebarOpen({ type: "Wallet", open: true }));
+			'Welcome to Cryptostamping! \n\n Click "Sign" to sign in. No password needed! \n\nThis request will not trigger a blockchain transaction or cost any gas fees.';
+		authenticate({ signingMessage });
 	};
 
 	return (
 		<div className={styles.header}>
-			<div className={styles.logo_box}>
-				<Link href="/">
-					<a>
-						<span className={styles.logo_icon} />
-					</a>
+			<Link href="/">
+				<a className={styles.logo_font}>cryptostamping</a>
+			</Link>
+			<div className={styles.buttons}>
+				<Link href="/start">
+				<a className={styles.button_font}>Start Using</a>
 				</Link>
-			</div>
-			<div className={styles.user_box}>
-				{isLoggedIn && (
-					<div className={styles.login_btn} onClick={openWallet}>
-						<span className={styles.logout_icon} />
-					</div>
-				)}
-				{!isLoggedIn && isTopLoading && (
-					<div className={styles.login_btn}>
-						<span
-							className={`${progress_styles.progress_spinner} ${progress_styles.black} ${styles.spinner_in_btn} ${progress_styles.active}`}
-						/>
-					</div>
-				)}
-				{!isLoggedIn && !isTopLoading && (
-					<div className={styles.login_btn} onClick={handleLogin}>
-						<span className={styles.login_icon} />
-					</div>
-				)}
+				<Link href="/learn">
+				<a className={styles.button_font}>For Developers</a>
+				</Link>
+				<Link href="/registry">
+				<a className={styles.button_font}>Registry</a>
+				</Link>
+				<Link href="/community">
+				<a className={styles.button_font}>Community</a>
+				</Link>
 			</div>
 		</div>
 	);

@@ -16,32 +16,25 @@ import {
 function Footer({}) {
 	return (
 		<div className={`${styles.screen} ${styles.screen_four}`}>
-			<h4 className={styles.four_title}>
-				The digital world in the future will be divided into two. <br />{" "}
-				One is worthless, one is Crypto-Stamped.
-			</h4>
-			<div className={styles.add_stamp}>
-				<span className={styles.add_icon} />
-			</div>
 			<div className={styles.social_links}>
-				<a href="https://twitter.com/cutoutsnft"
+				<a href="https://gitcoin.co/cryptostamping."
 				target="_blank"
 				rel="noreferrer"
 				className={styles.link_text}>
-					twitter
+					fund
 				</a>
-				<a href="https://discord.gg/XNNZ96b5V3"
+				<a href="https://reddit.com/r/cryptostamping"
 				target="_blank"
 				rel="noreferrer"
 				className={styles.link_text}>
-					discord
+					talk
 				</a>
-				<a href="https://cutoutsnft.medium.com"
-				target="_blank"
-				rel="noreferrer"
+				<Link href="/contribute">
+				<a 
 				className={styles.link_text}>
-					medium
+					build
 				</a>
+				</Link>
 			</div>
 		</div>
 	);
