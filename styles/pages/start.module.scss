@@ -1,5 +1,6 @@
 .container {
 	transition: transform 0.5s ease;
+	position: relative;
 }
 
 .screen_one{
@@ -11,29 +12,92 @@
 	position: relative;
 }
 
-.emptybox{
-	height: 300vh;
+.centered{
+	position: absolute;
+	height: 100vh;
+	//width: 100vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 101;
+}
+
+.left{
+	position: absolute;
+	height: 100vh;
+	left: 0;
+	z-index: 101;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.right{
+	position: absolute;
+	height: 100vh;
+	right: 0;
+	z-index: 101;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-end;
+}
+
+.bottom{
+	position: absolute;
+	bottom: 40px;
+	left: 0;
+	right: 0;
+	z-index: 101;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.paddedbox{
+	width: 400px;
+	text-align: center;
 }
 
 .header{
 	font-family: 'Raleway', sans-serif;
 	font-size: 30px;
 	font-weight: 400;
-	color: $black !important;
-	display: flex;
-	align-items: center;
-	text-decoration: none !important;
+	color: $black;
+	//display: flex;
+	//align-items: center;
+	text-decoration: none;
 	max-width: 500px;
 	text-align: center;
 }
 
+.left .header{
+	text-align: left;
+	padding: 30px;
+}
+
+.right .header{
+	text-align: right;
+	padding: 30px;
+}
+
 .tagtext{
 	font-family: 'Raleway', sans-serif;
-	letter-spacing: 0.5em;
-	font-size: 12px;
+	letter-spacing: 0.75em;
+	font-size: 18px;
 	font-weight: 500;
 	color: $black-7;
 	text-align: center;
+}
+
+.link{
+	color: $black !important;
+	text-decoration: underline $black !important;
+	font-weight: 700;
+	font-size: 18px;
+	padding: 0 30px;
 }
 
 .button{
@@ -54,79 +118,35 @@
 	box-shadow: 4px 4px 0px 2px rgba(0, 0, 0, 1);
 }
 
-
-.centered{
-	position: absolute;
-	height: 100vh;
-	//width: 100vw;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	z-index: 101;
-}
-
 .home_banner{
 	width: 100%;
-	position: absolute;
-	bottom: 10px;
-	left: 0;
-	right: 0;
-	height: 68vh;
+	height: 100vh;
 	object-fit: cover;
 	object-position: center;
-	z-index: 10;
-}
-
-.fill_banner{
-	width: 100%;
-	height: 90vh;
 	position: absolute;
 	bottom: 0;
 	left: 0;
 	right: 0;
-	object-fit: cover;
-	object-position: center;
-	z-index: 10;
+	z-index: 100;
 }
-
-.add_stamp{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 30px;
-	height: 100px;
-	padding: 30px;
-	border: 3px solid $black;
-	border-radius: 12px;
-	margin-bottom: 70px;
-	cursor: pointer;
-}
-
-.add_icon{
-	display: block;
-	min-width: 32px;
-	min-height: 32px;
-	background: url("/icons/add_minimal.svg");
-	background-position: center;
-	background-size: cover;
-	opacity: 0;
-	transform: scale(0.9,0.9);
-	transition: opacity 0.33s ease, transform 0.33s ease;
-}
-
-.add_stamp:hover .add_icon{
-	opacity: 1;
-	transform: scale(1,1);
-}
-
 
 /* SMALL SCREENS */
 
 @media only screen and (max-width: 767.98px) {
 
+	.left{
+		justify-content: flex-end;
+		bottom: 150px;
+	}
+
+	.right{
+		justify-content: flex-start;
+		top: 100px;
+	}
+
 	.header{
 		font-size: 18px;
+		font-weight: 700;
 	}
 
 	.tagtext{
@@ -148,20 +168,27 @@
 	}
 
 	.home_banner{
-		height: 130px;
-		object-position: center;
+		object-position: right;
 	}
-
 }
 
 /* MEDIUM SCREENS */
 
 @media only screen and (min-width: 768px) and (max-width: 991.98px) {
+
+	.header{
+		max-width: 30%;
+		font-size: 24px;
+	}
 	
 }
 
 /* LARGE SCREENS */
 
 @media only screen and (min-width: 992px) and (max-width: 1199.98px) {
+
+	.header{
+		max-width: 40%;
+	}
 	
 }

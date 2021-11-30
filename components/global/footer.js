@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { useMoralis } from "react-moralis";

@@ -13,12 +13,13 @@ import Navigation from "components/global/navigation";
 import FAQ from "components/home/faq";
 
 import styles from "styles/pages/home.module.scss";
-import { FRONTEND_BASE_URL, mainFAQs } from "lib/data";
+import { FRONTEND_BASE_URL } from "lib/data";
+import { useImageFade } from "lib/utils";
 
 import { setLoggedIn } from "lib/redux/features/userSlice";
 import { setTopLoading } from "lib/redux/features/uiSlice";
 
-export default function Homepage({}) {
+export default function Soonpage({}) {
 	const dispatch = useDispatch();
 
 	const { Moralis, authenticate, isAuthenticated, user, auth } = useMoralis();
@@ -34,25 +35,10 @@ export default function Homepage({}) {
 			/>
 			<div className={styles.screen_one}>
 				<img 
-				className={styles.home_banner}
-				src="/images/websitebg.png"
-				alt="" />
-				<div className={styles.centered}>
-				<div className={styles.add_stamp}>
-					<span className={styles.add_icon} />
-				</div>
-				<p className={styles.tagtext}>
-					OPEN-SOURCE . OWNERLESS . DECENTRALIZED
-				</p>
-				<p className={styles.header}>
-					 Use your NFT to stamp on websites, posts, articles, videos, games, anywhere on internet.
-				</p>
-				<Link  href="/intro">
-				<a className={styles.button}>
-				Explore Use-Cases.
-				</a>
-				</Link>
-				</div>
+				className={styles.fill_banner}
+				src="/images/cards/comingsoon1.png"
+				alt=""
+				{...useImageFade()} />
 			</div>
 			<Footer />
 		</div>
@@ -63,9 +49,9 @@ export default function Homepage({}) {
 export async function getStaticProps() {
 	/* meta tags that need to be passed to the header */
 	const header = {
-		title: `Cryptostamping | Opensource, Ownerless & Decentralized.`,
+		title: `Cryptostamping | Developer Docs.`,
 		description: `Use your NFT to stamp on websites, posts, articles, videos, games, anywhere on internet.`,
-		url: `${FRONTEND_BASE_URL}`,
+		url: `${FRONTEND_BASE_URL}/create`,
 		robots: "index,follow",
 		image: `${FRONTEND_BASE_URL}/images/cover.jpg`,
 	};

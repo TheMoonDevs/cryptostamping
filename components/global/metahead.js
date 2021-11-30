@@ -37,7 +37,9 @@ function MetaHead({ header }) {
       )}
       {header.image && <meta property="og:image" content={header.image} />}
       {header.url && <meta property="og:url" content={header.url} />}
-      <meta name="twitter:card" content="summary_large_image" />
+      {header.twitter && 
+      <meta name="twitter:card" content={header.twitter} />
+      }
       {header.robots ? (
         <meta name="robots" content={header.robots} />
       ) : (

@@ -3,10 +3,12 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	position: fixed;
+	position: absolute;
 	bottom: 0;
 	left: 0;
 	right: 0;
+	z-index: 1000;
+	background: $white;
 }
 
 .social_links{
@@ -39,13 +41,7 @@
 /* SMALL SCREENS */
 
 @media only screen and (max-width: 767.98px) {
-	.screen_four{
-		padding-top: 50px;
-	}
 
-	.four_title{
-		font-size: 18px;
-	}
 
 	.link_text{
 		font-size: 14px;
@@ -56,13 +52,7 @@
 /* MEDIUM SCREENS */
 
 @media only screen and (min-width: 768px) and (max-width: 991.98px) {
-	.screen_four{
-		padding-top: 50px;
-	}
 
-	.four_title{
-		font-size: 20px;
-	}
 
 	.link_text{
 		font-size: 14px;
@@ -72,9 +62,6 @@
 /* LARGE SCREENS */
 
 @media only screen and (min-width: 992px) and (max-width: 1199.98px) {
-	.four_title{
-		font-size: 26px;
-	}
 
 	.link_text{
 		font-size: 14px;
