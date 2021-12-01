@@ -26,14 +26,14 @@ function Navigation({ buttons }) {
 				</Link>
 			)}
 			{buttons?.includes("whitepaper") && (
-				<Link href="/docs/whitepaper">
-					<a className={`${styles.read_more} ${styles.complete}`}>
-						<span
-							className={`${styles.icon} ${styles.icon_whitepaper}`}
-						/>
-						Whitepaper
-					</a>
-				</Link>
+				<a href="/docs/whitepaper.pdf"
+					target="_blank" rel="noreferrer"
+					className={`${styles.read_more} ${styles.complete}`}>
+					<span
+						className={`${styles.icon} ${styles.icon_whitepaper}`}
+					/>
+					Whitepaper
+				</a>
 			)}
 			{buttons?.includes("roadmap") && (
 				<Link href="/roadmap">
