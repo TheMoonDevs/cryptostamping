@@ -57,12 +57,12 @@ function Layout(props) {
   }, [isLoggedIn, logout]);
 
   useEffect(() => {
-    if (!window.ethereum.selectedAddress || !user || !isLoggedIn) {
+    if (!window.ethereum?.selectedAddress || !user || !isLoggedIn) {
       return;
     }
-    localStorage.setItem("selected_address", window.ethereum.selectedAddress);
+    localStorage.setItem("selected_address", window.ethereum?.selectedAddress);
     const handleAccounts = (accounts) => {
-      if (accounts.length <= 0) return;
+      if (accounts.length <= 0 || !isLoggedIn) return;
       if (user && user.attributes.accounts.includes(accounts[0])) {
         return;
       }
