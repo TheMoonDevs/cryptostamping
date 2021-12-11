@@ -29,7 +29,7 @@ function Footer({}) {
 				className={styles.link_text}>
 					talk
 				</a>
-				<Link href="/contribute">
+				<Link href="/create">
 				<a 
 				className={styles.link_text}>
 					build

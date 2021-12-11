@@ -63,17 +63,16 @@ export default function Homepage({}) {
 				alt="" />
 				<div className={styles.left}>
 					<h1 className={styles.header}>Beta Testing begins on Dec 20. You can apply to join the fun & earn a Beta Contribution Badge.</h1>
-					<a className={styles.link}
-					href="https://forms.gle/EK8BDkD1rxuKes2Y7" target="_blank" rel="noreferrer">
-					Apply here.
-					</a>
+					<p className={styles.boldtag}>
+					Apply before Dec 18.
+					</p>
 				</div>
 				<div className={styles.right}>
 					<h1 className={styles.header}>Official Plugin & Embed will launch on Jan 10. Though you can actually pre-buy stamps & be ahead of the Game.</h1>
-					<a href=""
-					className={styles.link}>
+					<p 
+					className={styles.boldtag}>
 					Scroll to know more.
-					</a>
+					</p>
 				</div>
 				<div className={styles.bottom}>
 				<a className={`${styles.button} mx-3`}
