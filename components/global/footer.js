@@ -17,7 +17,7 @@ function Footer({}) {
 	return (
 		<div className={`${styles.screen} ${styles.screen_four}`}>
 			<div className={styles.social_links}>
-				<a href="https://gitcoin.co/cryptostamping."
+				<a href="https://gitcoin.co/grants/4292/cryptostamping"
 				target="_blank"
 				rel="noreferrer"
 				className={styles.link_text}>
