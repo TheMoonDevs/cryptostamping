@@ -73,6 +73,30 @@ a {
   display: none;
 }
 
+/* horiz_scroll */
+
+
+/* width */
+.horiz_scroll::-webkit-scrollbar {
+  height: 2px;
+}
+
+/* Track */
+.horiz_scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+.horiz_scroll::-webkit-scrollbar-thumb {
+  background: $white-7;
+}
+
+/* Handle on hover */
+.horiz_scroll::-webkit-scrollbar-thumb:hover {
+  background: $black-7;
+}
+
+
 .hidden {
   overflow: hidden;
 }

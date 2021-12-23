@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useMoralis } from "react-moralis";
 import Link from "next/link";
+import Script from "next/script";
 
 import WhitelistSidebar from "components/modals/whitelist";
 import WalletSidebar from "components/modals/wallet_sidebar";
@@ -33,25 +34,28 @@ export default function Homepage({}) {
 				authenticate={authenticate}
 			/>
 			<div className={styles.screen_one}>
-				<img 
-				className={styles.home_banner}
-				src="/images/websitebg.png"
-				alt="" />
+				<img
+					className={styles.home_banner}
+					src="/images/websitebg.png"
+					alt=""
+				/>
 				<div className={styles.centered}>
-				<div className={styles.add_stamp}>
-					<span className={styles.add_icon} />
-				</div>
-				<p className={styles.tagtext}>
-					OPEN-SOURCE . OWNERLESS . DECENTRALIZED
-				</p>
-				<p className={styles.header}>
-					 Use your NFT to stamp on websites, posts, articles, videos, games, anywhere on internet.
-				</p>
-				<Link  href="/intro">
-				<a className={styles.button}>
-				Explore Use-Cases.
-				</a>
-				</Link>
+					<div id="cryptostamping_v1" data-view="button"></div>
+					<link
+						href="https://embed.cryptostamping.org/widgets.css"
+						rel="stylesheet"
+					/>
+					<Script src="https://embed.cryptostamping.org/widgets.js"></Script>
+					<p className={styles.tagtext}>
+						OPEN-SOURCE . OWNERLESS . DECENTRALIZED
+					</p>
+					<p className={styles.header}>
+						Use your NFT to stamp on websites, posts, articles,
+						videos, games, anywhere on internet.
+					</p>
+					<Link href="/intro">
+						<a className={styles.button}>Explore Use-Cases.</a>
+					</Link>
 				</div>
 			</div>
 			<Footer />
@@ -76,5 +80,4 @@ export async function getStaticProps() {
 			header_type: "normal",
 		},
 	};
-
 }
