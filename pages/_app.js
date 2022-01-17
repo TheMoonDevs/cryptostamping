@@ -12,6 +12,7 @@ import "styles/colors.scss";
 
 import MetaHead from "components/global/metahead";
 import PageLoader from "components/global/pageloader";
+import Header from "components/global/header";
 
 import { useSize } from "lib/img_helper";
 import { MOLARIS_APP_ID, MOLARIS_SERVER_URL } from "lib/data";
@@ -41,7 +42,7 @@ function Layout(props) {
   } = useMoralis();
 
   useEffect(() => {
-    if(isLoggedIn && !window.ethereum?.selectedAddress){
+    if (isLoggedIn && !window.ethereum?.selectedAddress) {
       logout();
       return;
     }
@@ -99,6 +100,11 @@ function Layout(props) {
     <div>
       {props.header && <MetaHead header={props.header} />}
       <main className={`wrapper yellow`}>
+        <Header
+          dispatch={dispatch}
+          Moralis={Moralis}
+          authenticate={authenticate}
+        />
         <PageLoader loading={isTopLoading} color="primary" />
         {isInitialized && React.cloneElement(props.children, {})}
       </main>

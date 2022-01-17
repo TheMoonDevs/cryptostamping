@@ -4,11 +4,6 @@ import { useMoralis } from "react-moralis";
 import Link from "next/link";
 import Script from "next/script";
 
-import WhitelistSidebar from "components/modals/whitelist";
-import WalletSidebar from "components/modals/wallet_sidebar";
-import TrailerSidebar from "components/modals/trailer";
-import AuctionBlock from "components/home/auctionblock";
-import Header from "components/global/header";
 import Footer from "components/global/footer";
 import Navigation from "components/global/navigation";
 import FAQ from "components/home/faq";
@@ -19,20 +14,13 @@ import { FRONTEND_BASE_URL, mainFAQs } from "lib/data";
 import { setLoggedIn } from "lib/redux/features/userSlice";
 import { setTopLoading } from "lib/redux/features/uiSlice";
 
-export default function Homepage({}) {
+export default function Homepage({Moralis, authenticate, user}) {
 	const dispatch = useDispatch();
-
-	const { Moralis, authenticate, isAuthenticated, user, auth } = useMoralis();
 
 	const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
 
 	return (
 		<div className={`${styles.container}`}>
-			<Header
-				dispatch={dispatch}
-				Moralis={Moralis}
-				authenticate={authenticate}
-			/>
 			<div className={styles.screen_one}>
 				<img
 					className={styles.home_banner}

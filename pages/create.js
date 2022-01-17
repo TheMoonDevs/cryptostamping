@@ -19,20 +19,13 @@ import { useImageFade } from "lib/utils";
 import { setLoggedIn } from "lib/redux/features/userSlice";
 import { setTopLoading } from "lib/redux/features/uiSlice";
 
-export default function Soonpage({}) {
+export default function Soonpage({Moralis, authenticate, user}) {
 	const dispatch = useDispatch();
-
-	const { Moralis, authenticate, isAuthenticated, user, auth } = useMoralis();
 
 	const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
 
 	return (
 		<div className={`${styles.container}`}>
-			<Header
-				dispatch={dispatch}
-				Moralis={Moralis}
-				authenticate={authenticate}
-			/>
 			<div className={styles.screen_one}>
 				<img 
 				className={styles.fill_banner}

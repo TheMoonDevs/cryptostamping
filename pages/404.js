@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 
 import styles from "styles/pages/mint.module.scss";
-import { FRONTEND_BASE_URL, IN_DEV_ENV } from "lib/data";
+import { APP_TITLE, FRONTEND_BASE_URL, IN_DEV_ENV } from "lib/data";
 
 export default function ErrorPage({}) {
 	
@@ -17,7 +17,7 @@ export default function ErrorPage({}) {
 export async function getStaticProps() {
 	/* meta tags that need to be passed to the header */
 	const header = {
-		title: `Cut Outs | Page Not Found.`,
+		title: `${APP_TITLE} | Page Not Found.`,
 		description: `Page Not Found`,
 		url: FRONTEND_BASE_URL,
 		robots: "noindex,nofollow",

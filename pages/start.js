@@ -41,21 +41,14 @@ const renderCard = memo(
 );
 renderCard.displayName = "card";
 
-export default function Homepage({}) {
+export default function Startpage({Moralis, authenticate, user}) {
 	const dispatch = useDispatch();
 	const listRef = useRef();
-
-	const { Moralis, authenticate, isAuthenticated, user, auth } = useMoralis();
 
 	const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
 
 	return (
 		<div className={`${styles.container}`}>
-			<Header
-				dispatch={dispatch}
-				Moralis={Moralis}
-				authenticate={authenticate}
-			/>
 			<div className={styles.screen_one}>
 				<img 
 				className={styles.home_banner}
