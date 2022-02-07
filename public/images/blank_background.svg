@@ -1,1 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1024 1024"><defs><style>.cls-1{fill:url(#radial-gradient);}.cls-2{font-size:8.6px;fill:#4d4d4d;font-family:MyriadPro-Regular, Myriad Pro;letter-spacing:0.8em;}.cls-3{letter-spacing:0.76em;}.cls-4{letter-spacing:0.76em;}.cls-5{letter-spacing:0.8em;}</style><radialGradient id="radial-gradient" cx="512" cy="512" r="538.55" gradientUnits="userSpaceOnUse"><stop offset="0.47" stop-color="#e6e6e6"/><stop offset="0.54" stop-color="#ececec"/><stop offset="0.79" stop-color="#fafafa"/><stop offset="1" stop-color="#fff"/></radialGradient></defs><title>background</title><g id="background"><rect class="cls-1" x="-19" y="-34" width="1062" height="1092"/></g><g id="stamp"><text class="cls-2" transform="translate(-188.2 936.33)">W H I<tspan class="cls-3" x="52.98" y="0"> </tspan><tspan x="61.33" y="0" xml:space="preserve">T E     S</tspan><tspan class="cls-4" x="146.92" y="0"> </tspan><tspan class="cls-5" x="155.27" y="0">T A G</tspan></text></g></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1024 1024" style="enable-background:new 0 0 1024 1024;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#4D4D4D;}
+	.st1{font-family:'ArialMT';}
+	.st2{font-size:8.6px;}
+	.st3{letter-spacing:6;}
+</style>
+<title>background</title>
+<g id="stamp">
+	<text transform="matrix(1 0 0 1 -188.2 936.33)" class="st0 st1 st2 st3">W H I</text>
+	<text transform="matrix(1 0 0 1 -135.22 936.33)" class="st0 st1 st2 st3"> </text>
+	<text transform="matrix(1 0 0 1 -126.87 936.33)" class="st0 st1 st2 st3">T E     S</text>
+	<text transform="matrix(1 0 0 1 -41.28 936.33)" class="st0 st1 st2 st3"> </text>
+	<text transform="matrix(1 0 0 1 -32.93 936.33)" class="st0 st1 st2 st3">T A G</text>
+</g>
+</svg>

@@ -463,7 +463,7 @@ export default function PrivacyPage({}) {
 			<p>
 				We will let You know via email and/or a prominent notice on Our
 				Service, prior to the change becoming effective and update the
-				\"Last updated\" date at the top of this Privacy Policy.
+				"Last updated" date at the top of this Privacy Policy.
 			</p>
 			<p>
 				You are advised to review this Privacy Policy periodically for
@@ -488,7 +488,7 @@ export async function getStaticProps() {
 	/* meta tags that need to be passed to the header */
 	const header = {
 		title: `Cryptostamping | Privacy policy.`,
-		description: ``,
+		description: `The provacy policy of cryptostamping browser extension`,
 		url: `${FRONTEND_BASE_URL}/extension/privacy`,
 		robots: "noindex,nofollow",
 	};

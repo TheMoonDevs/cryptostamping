@@ -11,6 +11,11 @@ a {
   text-decoration: none;
 }
 
+a:hover,
+a:focus{
+  color: $black;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -20,11 +25,16 @@ a {
 }
 
 .page_container{
-  margin-top: 180px;
+  margin-top: $header-height;
 	display: block;
 	position: relative;
 	z-index: 0;
 	background: $white;
+}
+
+.page_wrapper{
+  margin-top: $header-height;
+  min-height: 100vh;
 }
 
 .page_container.hide_page{
@@ -43,9 +53,21 @@ a {
   left: $sidebar-width;
 }
 
-.not_link{
+.not_link,
+.diva{
 	outline: none !important;
 	text-decoration: none !important;
+}
+
+.d-vert-center{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.divider{
+  border-top: 1px solid $white-8;
 }
 
 /* OTHER */
@@ -113,4 +135,93 @@ a {
   user-select: none; /* Standard */
 }
 
+.popup-content{
+  z-index: 9999 !important;
+}
 
+/* ICONS */
+
+
+.all{
+  background: url($asset-url+"/icons/shuffle.svg");
+}
+
+.ethereum,
+.ropsten,
+.rinkeby
+.eth{
+  background: url($asset-url+"/icons/sq_etherium.svg");
+}
+
+.binance,
+.bsc,
+.bsc.testnet{
+  background: url($asset-url+"/icons/sq_binance.svg");
+}
+
+.polygon,
+.mumbai{
+  background: url($asset-url+"/icons/sq_polygon.svg");
+}
+
+.avalanche,
+.avalanche.testnet{
+  background: url($asset-url+"/icons/sq_avalanche.svg");
+}
+
+.price_desc{
+  background: url($asset-url+"/icons/paid.svg");
+}
+
+.price_asc{
+  background: url($asset-url+"/icons/infinity.svg");
+}
+
+.created_desc{
+  background: url($asset-url+"/icons/watch_later.svg");
+}
+
+.created_asc{
+  background: url($asset-url+"/icons/hourglass.svg");
+}
+
+.opensea{
+  background: url($asset-url+"/icons/ext_opensea.svg"); 
+  opacity: 0.25;
+}
+
+.twitter{
+  background: url($asset-url+"/icons/twitter.svg"); 
+  opacity: 0.25;
+}
+
+.instagram{
+  background: url($asset-url+"/icons/instagram.svg"); 
+  opacity: 0.25;
+}
+
+.discord{
+  background: url($asset-url+"/icons/discord.svg"); 
+  opacity: 0.25;
+}
+
+.new_tab{
+  background: url($asset-url+"/icons/open_in_new.svg"); 
+  opacity: 0.25;
+}
+
+.public{
+  background: url($asset-url+"/icons/public.svg"); 
+  opacity: 0.25;
+}
+
+.hover_op:hover,
+.hover_op:focus{
+  opacity: 1;
+}
+
+.opensea:hover,
+.opensea:focus{
+  opacity: 1;
+  filter: $f-skyblue;
+}

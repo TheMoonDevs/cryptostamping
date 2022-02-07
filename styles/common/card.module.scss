@@ -47,7 +47,7 @@
 
 .image{
 	width: 100%;
-	min-height: 200px;
+	min-height: 120px;
 	object-fit: cover;
 	object-position: center;
 	border-radius: 20px 20px 0 0;
@@ -61,4 +61,19 @@
 
 .infobox p {
 	font-size: 12px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	white-space: pre-line;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
+
+.infobox h2{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	white-space: pre-line;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
 }

@@ -1,0 +1,219 @@
+.stamping_card{
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	border-bottom: 1px solid $white-8;
+	padding: 20px;
+	width: 100%;
+}
+
+.stamp_med,
+.stamping_mini{
+	width: 40px;
+	height: 60px;
+	display: block;
+	cursor: pointer;
+	transform: scale(1, 1);
+	opacity: 0;
+	transition: transform 0.33s ease, opacity 1s ease;
+	object-fit: cover;
+	object-position: center;
+	background: var(--white);
+	border-radius: 8px;
+	box-shadow: 0px 2px 8px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stamping_mini{
+	width: 40px;
+	height: 60px;
+}
+
+.stamping_med{
+	width: 150px;
+	height: 240px;
+	border-radius: 12px 12px 0 0;
+	background: $white-10;
+}
+
+.visible{
+	opacity: 1;
+}
+
+.stamping_descr_large{
+	color: $black;
+	font-size: 24px;
+	font-weight: 400;
+	margin-bottom: 20px;
+	max-width: 80%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	white-space: pre-line;
+	-webkit-line-clamp: 5;
+	-webkit-box-orient: vertical;
+}
+
+.icon_rank{
+	background: url("/icons/verified.svg")
+}
+
+.web_card{
+	display: flex;
+	align-items: stretch;
+	justify-content: space-between;
+	text-decoration: none !important;
+	outline: none !important;
+	cursor: pointer;
+	border: 1px solid $white-8;
+	border-radius: 24px;
+	margin-top: 10px;
+	background: $white;
+	width: 100%;
+}
+
+.web_card:hover,
+.web_card:focus{
+	//background: $white-10;
+	color: $black;
+	box-shadow: 2px 2px 8px 4px rgba(0, 0, 0, 0.05);
+}
+
+.web_left_block{
+	min-width: 0;
+	display: block;
+	padding: 15px 20px;
+	border-right: 1px solid $white-8;
+}
+
+.web_right_block{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.web_right_icon{
+	opacity: 0.25;
+	margin: 10px 10px;
+	width: 24px;
+	height: 24px;
+	background: url("/icons/seemore.svg");
+	background-size: cover;
+	background-position: center;
+}
+
+.web_card:hover .web_right_icon,
+.web_card:focus .web_right_icon{
+	opacity: 1;
+}
+
+.web_logo{
+	width: 40px;
+	height: 40px;
+	padding: 5px;
+	background: $white;
+	border-radius: 50%;
+	object-fit: cover;
+	object-position: center;
+}
+
+.web_image{
+	width: 200px;
+	height: auto;
+	min-width: 200px;
+	max-height: 125px;
+	border-right: 1px solid $white-7;
+	border-radius: 24px 0 0 24px;
+	object-fit: cover;
+	object-position: center;
+}
+
+.web_info{
+	min-width: 100%;
+	display: block;
+	position: relative;
+	padding: 0px 10px;
+}
+
+.web_info .title{
+	font-size: 14px;
+	font-weight: 700;
+	margin-bottom: 0px;
+	display: block;
+	max-width: 90%;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	color: $black-8;
+}
+
+.url{
+	font-size: 11px;
+	font-weight: 500;
+	margin-bottom: 0;
+	color: $black-7;
+	max-width: 50%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.url.blue_link{
+	color: $black;
+	text-decoration: none !important;
+	opacity: 1;
+}
+
+.link{
+	color: $black;
+	text-decoration: underline $black !important;
+}
+
+.blue_link:hover,
+.blue_link:focus,
+.blue_link:active{
+	opacity: 0.5;
+}
+
+.light{
+	color: $mid-grey;
+	font-weight: 400;
+}
+
+.web_descr{
+	font-family: 'Roboto', sans-serif;
+	color: $dark-grey;
+	font-size: 14px;
+	font-weight: 400;
+	margin-top: 10px;
+	margin-bottom: 0;
+	max-width: 80%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	white-space: pre-line;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+.stamping_infobox{
+	display: block;
+	min-width: 0;
+	padding-left: 1.5em;
+}
+
+.stamping_link{
+	display: block;
+	color: $black;
+	text-decoration: underline solid $black;
+	font-weight: 700;
+	font-size: 14px;
+	font-family: 'Roboto', sans-serif;
+	opacity: 1;
+}
+
+.stamping_link:hover,
+.stamping_link:focus{
+	opacity: 0.7;
+	color: $black;
+	text-decoration: underline solid $black;
+}

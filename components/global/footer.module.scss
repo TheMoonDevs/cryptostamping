@@ -1,69 +1,201 @@
-.screen_four{
+.screen_two {
+	padding: 100px 0 100px 50px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: stretch;
+}
+
+.dark_bg {
+	background: $black;
+	color: $white;
+}
+
+.square_image {
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+	object-position: center;
+}
+
+.menu {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	z-index: 1000;
-	background: $white;
+	align-items: flex-start;
+	// margin:10px 10px;
 }
 
-.social_links{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-bottom: 10px;
+.headline {
+	font-family: "Raleway", sans-serif;
+	font-size: 20px;
+	font-weight: 700;
+	margin-bottom: 1em;
 }
 
-.link_text{
-	flex: 1;
-	font-family: 'Roboto', sans-serif;
-	font-style: normal;
-	font-weight: 400;
-	font-size: 16px;
-	color: $black-8 !important;
-	padding: 0 8px;
-	text-align: center;
-	text-decoration: underline $black !important;
-	opacity: 0.5;
+.link {
+	font-weight: 700;
+	color: $mid-grey;
+	font-size: 14px;
+	padding: 5px 0;
 }
 
-.link_text:hover,
-.link_text:focus{
+.link:hover,
+.link:focus,
+.link:active {
+	color: $skyblue;
+}
+
+.icon_explore {
+	background: url("/icons/shuffle.svg");
+	filter: $f-white;
+}
+
+.icon_ext {
+	background: url("/icons/extension.svg");
+	filter: $f-white;
+}
+
+.icon_embed {
+	background: url("/icons/embed.svg");
+	filter: $f-white;
+}
+
+.icon_verify {
+	background: url("/icons/verified_checker.svg");
+	filter: $f-white;
+}
+
+.icon_doc {
+	background: url("/icons/book.svg");
+	filter: $f-white;
+}
+
+.icon_scan {
+	background: url("/icons/center_focus.svg");
+	filter: $f-white;
+}
+
+.icon_regulations {
+	background: url("/icons/article.svg");
+	filter: $f-white;
+}
+
+.icon_twitter {
+	background: url("/icons/twitter.svg");
+	filter: $f-white;
+}
+
+.icon_gitcoin {
+	background: url("/icons/gitcoin.svg");
+	filter: $f-white;
+}
+
+.icon_github {
+	background: url("/icons/github.svg");
+	filter: $f-white;
+}
+
+.icon_reddit {
+	background: url("/icons/reddit.svg");
+	filter: $f-white;
+}
+
+.icon_discord {
+	background: url("/icons/discord.svg");
+	filter: $f-white;
+}
+
+.icon_how {
+	background: url("/icons/tips_and_updates.svg");
+	filter: $f-white;
+}
+
+.icon_dao {
+	background: url("/icons/donut.svg");
+	filter: $f-white;
+}
+
+.icon_help {
+	background: url("/icons/help_black.svg");
+	filter: $f-white;
+}
+
+.icon_intro {
+	background: url("/icons/subject.svg");
+	filter: $f-white;
+}
+
+.icon_use {
+	background: url("/icons/subject.svg");
+	filter: $f-white;
+}
+
+.link:hover .icon {
+	filter: $f-skyblue;
 	opacity: 1;
 }
 
-
+.icon {
+	margin: 0 10px 0 0;
+	opacity: 0.5;
+	vertical-align: middle;
+	display: inline-block;
+	min-width: 1.3em;
+	min-height: 1.3em;
+	background-size: cover;
+	background-position: center;
+}
 
 /* SMALL SCREENS */
 
 @media only screen and (max-width: 767.98px) {
-
-
-	.link_text{
-		font-size: 14px;
+	.screen_two {
+		padding: 50px 0 50px 0px;
+		justify-content: center;
 	}
-	
+
+	.headline {
+		font-size: 13px;
+	}
+
+	.menu{
+		margin: 20px 0;
+	}
+
+	.link {
+		font-size: 11px;
+	}
 }
 
 /* MEDIUM SCREENS */
 
 @media only screen and (min-width: 768px) and (max-width: 991.98px) {
+	.screen_two {
+		padding: 50px 0 50px 10px;
+	}
 
-
-	.link_text{
+	.headline {
 		font-size: 14px;
+	}
+
+	.link {
+		font-size: 12px;
 	}
 }
 
 /* LARGE SCREENS */
 
 @media only screen and (min-width: 992px) and (max-width: 1199.98px) {
+	.screen_two {
+		padding: 50px 0 50px 10px;
+	}
 
-	.link_text{
+	.headline {
 		font-size: 14px;
-	}	
+	}
+
+	.link {
+		font-size: 12px;
+	}
 }

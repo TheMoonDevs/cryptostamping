@@ -61,6 +61,10 @@
 	align-items: center;
 }
 
+.buttons > *{
+	margin: 0 20px;
+}
+
 .button_font {
 	cursor: pointer;
 	font-family: "Raleway", cursive;
@@ -71,7 +75,6 @@
 	align-items: center;
 	text-decoration: none !important;
 	padding: 0 10px;
-	margin: 0 20px;
 	border-bottom: 2px solid transparent;
 	transition: border-bottom 0.33s ease;
 }
@@ -82,8 +85,154 @@
 }
 
 .button_font.active {
-	border-bottom: 2px solid $black;
+	//border-bottom: 2px solid $black;
 }
+
+.icon_arrow{
+	min-width: 1.5em;
+	min-height: 1.5em;
+	transform: rotate(180deg);
+	transition: transform 0.33s ease;
+	background: url("/icons/up.svg");
+	background-size: cover;
+	background-position: center;
+}
+
+.button_font.active .icon_arrow{
+	transform: rotate(0deg);
+}
+
+.popup_box{
+	margin-top: 20px !important;
+}
+
+.vert_list{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	font-size: 14px;
+	font-family: "Roboto", sans-serif;
+	font-weight: 500;
+}
+
+.vert_list a{
+	transition: border 0.11s ease;
+	padding: 15px 20px;
+	border-left: 0px solid $black;
+	border-right: 5px solid transparent;
+	text-decoration: none !important;
+	outline: none !important;
+	color: $mid-grey;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.vert_list a:hover{
+	color: $black;
+	background: $white;
+	border-left: 5px solid $black;
+	border-right: 0px solid transparent;
+}
+
+.icon_explore{
+	background: url("/icons/shuffle.svg");
+	filter: $f-grey;
+}
+
+.icon_ext{
+	background: url("/icons/extension.svg");
+	filter: $f-grey;
+}
+
+.icon_embed{
+	background: url("/icons/embed.svg");
+	filter: $f-grey;
+}
+
+.icon_verify{
+	background: url("/icons/verified_checker.svg");
+	filter: $f-grey;
+}
+
+.icon_doc{
+	background: url("/icons/book.svg");
+	filter: $f-grey;
+}
+
+.icon_scan{
+	background: url("/icons/center_focus.svg");
+	filter: $f-grey;
+}
+
+.icon_regulations{
+	background: url("/icons/article.svg");
+	filter: $f-grey;
+}
+
+.icon_twitter{
+	background: url("/icons/twitter.svg");
+	filter: $f-grey;
+}
+
+.icon_gitcoin{
+	background: url("/icons/gitcoin.svg");
+	filter: $f-grey;
+}
+
+.icon_github{
+	background: url("/icons/github.svg");
+	filter: $f-grey;
+}
+
+.icon_reddit{
+	background: url("/icons/reddit.svg");
+	filter: $f-grey;
+}
+
+.icon_discord{
+	background: url("/icons/discord.svg");
+	filter: $f-grey;
+}
+
+.icon_how{
+	background: url("/icons/tips_and_updates.svg");
+	filter: $f-grey;
+}
+
+.icon_dao{
+	background: url("/icons/donut.svg");
+	filter: $f-grey;
+}
+
+.icon_help{
+	background: url("/icons/help_black.svg");
+	filter: $f-grey;
+}
+
+.icon_intro{
+	background: url("/icons/subject.svg");
+	filter: $f-grey;
+}
+
+.icon_use{
+	background: url("/icons/subject.svg");
+	filter: $f-grey;
+}
+
+.hover_color:hover .icon{
+	filter: unset;
+}
+
+.icon{
+	margin-left: 20px;
+	min-width: 1.3em;
+	min-height: 1.3em;
+	background-size: cover;
+	background-position: center;
+}
+
+
 
 /* SMALL SCREENS */
 

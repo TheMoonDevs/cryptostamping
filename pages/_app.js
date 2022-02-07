@@ -13,6 +13,7 @@ import "styles/colors.scss";
 import MetaHead from "components/global/metahead";
 import PageLoader from "components/global/pageloader";
 import Header from "components/global/header";
+import Footer from "components/global/footer";
 
 import { useSize } from "lib/img_helper";
 import { MOLARIS_APP_ID, MOLARIS_SERVER_URL } from "lib/data";
@@ -22,6 +23,7 @@ import { storeValue, retrieveValue } from "lib/browser_sync";
 
 import { setTopLoading } from "lib/redux/features/uiSlice";
 import { setLoggedIn } from "lib/redux/features/userSlice";
+
 
 function Layout(props) {
   const router = useRouter();
@@ -106,7 +108,8 @@ function Layout(props) {
           authenticate={authenticate}
         />
         <PageLoader loading={isTopLoading} color="primary" />
-        {isInitialized && React.cloneElement(props.children, {})}
+        {isInitialized && React.cloneElement(props.children, {Moralis, authenticate, user})}
+        {props.footer && <Footer />}
       </main>
     </div>
   );

@@ -9,28 +9,36 @@ import { prettyPrintDate } from "lib/utils";
 
 // eslint-disable-next-line react/display-name
 const Tooltip = memo((props) => {
-  const [description, setDescription] = useState(props.description);
-  
   return (
     <Popup
       key={props.key}
       open={props.open}
-      arrow={false}
+      onOpen={props.onOpen}
+      arrow={props.arrow ? props.arrow : false}
       mouseEnterDelay={props.delay ? props.delay : 500}
       trigger={() => props.trigger}
       position={props.position ? props.position : "top left"}
       on={props.on ? props.on : ["hover", "focus"]}
+      keepTooltipInside={true}
+      className={`${props.theme}-cryptostamping-popup cryptostamping-popup ${props.shadow ? "shadowed": ""} ${props.arrow ? "arrowed": ""}`}
+      nested={false || props.nested}
     >
       {(close) => (
-        <div className={styles.popup_tooltip}>
-          <div className={styles.popup_box}>
-            <p>{description}</p>
-          </div>
+        <div onClick={()=> {
+          if(props.closeOnClick) close();
+        }}
+        className={`${styles.popup_tooltip} ${props.popupClass}`}>
+          {props.description && (
+            <div className={styles.popup_box}>
+              <p>{props.description}</p>
+            </div>
+          )}
           {props.children}
         </div>
       )}
     </Popup>
   );
 });
+Tooltip.displayName ="popup-tooltip"
 
 export default Tooltip;

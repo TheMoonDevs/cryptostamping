@@ -82,7 +82,6 @@ export default function Homepage({Moralis, authenticate, user}) {
 					</Link>
 				</div>
 			</div>
-			<Footer />
 		</div>
 	);
 }

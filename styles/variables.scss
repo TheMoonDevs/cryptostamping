@@ -66,6 +66,60 @@ $d-grey: #505050;
 
 
 $sidebar-width: 84px;
-$header-height: 3rem;
+$header-height: 105px;
+$asset-url: "";
+
+
+/*THEME COLORS FOR LIGHT MODE*/
+.wrapper,
+.popup-content,
+.light-popup-content {
+	--white: #ffffff;
+	--white-10: #f0f0f0;
+	--white-9: #e8e8e8;
+	--white-8: #e5e5e5;
+	--white-7: #d7d7d7;
+	--super-light-grey: #c4c4c4;
+	--light-grey: #a8a8a8;
+	--mid-grey: #808080;
+	--dark-grey: #505050;
+	--black-7: #5b5b5b;
+	--black-8: #303030;
+	--black-9: #252525;
+	--black-10: #1f1f1f;
+	--black-11: #141414;
+	--black: #000000;
+	--grey: #808080;
+	--f-grey: invert(54%) sepia(0%) saturate(0%) hue-rotate(47deg)
+		brightness(94%) contrast(94%);
+	--f-white: invert(100%) sepia(1%) saturate(2%) hue-rotate(164deg)
+		brightness(105%) contrast(100%);
+	--f-black: invert(0%) sepia(0%) saturate(0%) hue-rotate(324deg) brightness(96%) contrast(104%);
+}
+
+.wrapper[data-theme="dark"],
+.dark-popup-content{
+	--black: #ffffff;
+	--black-10: #f0f0f0;
+	--black-9: #e8e8e8;
+	--black-8: #e5e5e5;
+	--black-7: #d7d7d7;
+	--dark-grey: #c4c4c4;
+	--mid-grey: #a8a8a8;
+	--light-grey: #808080;
+	--super-light-grey: #505050;
+	--white-7: #5b5b5b;
+	--white-8: #303030;
+	--white-9: #252525;
+	--white-10: #1f1f1f;
+	--white-11: #141414;
+	--white: #000000;
+	--grey: #808080;
+	--f-grey: invert(54%) sepia(0%) saturate(0%) hue-rotate(47deg)
+		brightness(94%) contrast(94%);
+	--f-black: invert(100%) sepia(1%) saturate(2%) hue-rotate(164deg)
+		brightness(105%) contrast(100%);
+	--f-white: invert(0%) sepia(0%) saturate(0%) hue-rotate(324deg) brightness(96%) contrast(104%);
+}
 
 
