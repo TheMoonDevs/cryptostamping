@@ -160,6 +160,26 @@
 	margin-bottom: 5px;
 }
 
+.card_tooltip{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+.card_tooltip > * {
+	font-size: 8px;
+	font-weight: 700;
+	color: $white;
+	background: rgba(255, 165, 0, 0.9);
+	padding: 3px 15px;
+	margin-top: 5px;
+	letter-spacing: 0.2em;
+}
+
 .card_header{
 	display: flex;
 	justify-content: space-around;

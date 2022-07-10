@@ -248,29 +248,7 @@ export default function Homepage({ Moralis, authenticate, user }) {
 					/>
 				</div>
 			</div>
-			<div className={`${styles.screen_three} container d-none`}>
-				<div className={`col-5`}>
-					<div className={`d-block pr-5 mr-5`}>
-						<h1 className={styles.headline}>
-							Restructuring the digital world for years to come.
-						</h1>
-						<p className={styles.description}>
-							From websites that are dynamic, to something as
-							complex as metaverse, you can add value to any
-							digital content and it just gets better and more
-							authentic with the growing spam of internet.
-						</p>
-					</div>
-				</div>
-				<div className={`col-7`}>
-					<img
-						className={styles.square_image}
-						src="/images/cryptostamping/screen_3.jpg"
-						alt=""
-					/>
-				</div>
-			</div>
-			<div id="slideshow" className={`${styles.screen_three} container`}>
+			<div id="slideshow" className={`${styles.screen_three} container d-none`}>
 				<div className={`col-12 col-md-7`}>
 					<img
 						className={styles.square_image}
@@ -367,7 +345,7 @@ export async function getStaticProps() {
 		description: `Use your NFT to stamp on websites, posts, articles, videos, games, anywhere on internet.`,
 		url: `${FRONTEND_BASE_URL}`,
 		robots: "index,follow",
-		image: `${FRONTEND_BASE_URL}/images/cover.jpg`,
+		image: `${FRONTEND_BASE_URL}/images/cryptostamping/screen_7.jpg`,
 	};
 
 	return {

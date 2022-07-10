@@ -18,12 +18,13 @@ import {
 	IN_DEV_ENV,
 	stampCollectionCards,
 	supportedMainChains,
+	supportedChains,
 	availableMainChains,
 	availableTestChains,
 	getChainObject,
 	isTestnet,
 } from "lib/data";
-import {MoralisQuery} from "lib/moralis";
+import { MoralisQuery } from "lib/moralis";
 
 export default function StampsPage({ Moralis, authenticate, user }) {
 	const dispatch = useDispatch();
@@ -67,8 +68,7 @@ export default function StampsPage({ Moralis, authenticate, user }) {
 			query.equalTo("enabled", true);
 			if (currentFilter.symbol !== "all")
 				query.equalTo("chain", currentFilter.symbol);
-			else
-				query.containedIn("chain", supportedMainChains);
+			else query.containedIn("chain", supportedChains);
 			if (currentSort.order) query.descending(currentSort.type);
 			else query.ascending(currentSort.type);
 			query.limit(30);
@@ -76,20 +76,30 @@ export default function StampsPage({ Moralis, authenticate, user }) {
 		},
 		[currentFilter, currentSort]
 	);
-	useEffect(() =>{
+	useEffect(() => {
 		//LOAD COLLECTION COUNT
-			MoralisQuery(Moralis, {
-				className: "Stampset",
-				equalTo: [
-					{ name: "chain", value: currentFilter?.symbol || "all" },
-				],
-				exec: "count",
+		let condition = {
+			equalTo: [
+				{ name: "chain", value: currentFilter?.symbol },
+				{ name: "enabled", value: true },
+			],
+		};
+		if (currentFilter.symbol === "all") {
+			condition = {
+				containedIn: [{ name: "chain", value: supportedChains }],
+				equalTo: [{ name: "enabled", value: true }],
+			};
+		}
+		MoralisQuery(Moralis, {
+			className: "Stampset",
+			...condition,
+			exec: "count",
+		})
+			.then((response) => {
+				setCollectionCount(response);
 			})
-				.then((response) => {
-					setCollectionCount(response);
-				})
-				.catch((error) => {});
-	},[])
+			.catch((error) => {});
+	}, [currentFilter]);
 
 	useEffect(() => {
 		setStampsets(Array.from(stampsets_data, (x) => x.toJSON()));
@@ -231,6 +241,13 @@ export default function StampsPage({ Moralis, authenticate, user }) {
 											src={stampset.images_meta?.feature}
 											alt=""
 										/>
+										{!supportedMainChains.includes(stampset.chain) &&
+										<div className={styles.card_tooltip}>
+											<p>
+												THIS IS A TESTNET
+											</p>
+										</div>
+										}
 										<div className={styles.card_header}>
 											<div className={styles.card_stats}>
 												<p className={styles.number}>
@@ -243,12 +260,16 @@ export default function StampsPage({ Moralis, authenticate, user }) {
 											<div className={"d-vert-center"}>
 												<img
 													className={styles.logo}
-													src={stampset.images_meta?.logo}
+													src={
+														stampset.images_meta
+															?.logo
+													}
 													alt=""
 												/>
 												<h4>
 													{stampset?.title}
-													{stampset.owner_meta?.verified && (
+													{stampset.owner_meta
+														?.verified && (
 														<span
 															className={`${styles.inline_icon} ${styles.icon_verified}`}
 														/>
@@ -287,42 +308,44 @@ export default function StampsPage({ Moralis, authenticate, user }) {
 												</p>
 											</div>
 											<div className="d-flex align-items-center">
-												{!isTestnet(stampset.chain) &&
-												<a
-													className={"diva"}
-													href={`https://opensea.io/collection/${stampset.token_address}`}
-													target="_blank"
-													rel="noreferrer"
-												>
-													<span
-														className={`${styles.tab_icon} opensea mx-1`}
-													></span>
-												</a>
-												}
-												{stampset.links_meta?.twitter &&
-												<a
-													className={"diva"}
-													href={`https://twitter.com/@${stampset.links_meta?.twitter}`}
-													target="_blank"
-													rel="noreferrer"
-												>
-													<span
-														className={`${styles.tab_icon} twitter hover_op mx-1`}
-													></span>
-												</a>
-												}
-												{stampset.links_meta?.website &&
-												<a
-													className={"diva"}
-													href={`${stampset.links_meta?.website}`}
-													target="_blank"
-													rel="noreferrer"
-												>
-													<span
-														className={`${styles.tab_icon} new_tab hover_op mx-1`}
-													></span>
-												</a>
-												}
+												{!isTestnet(stampset.chain) && (
+													<a
+														className={"diva"}
+														href={`https://opensea.io/collection/${stampset.token_address}`}
+														target="_blank"
+														rel="noreferrer"
+													>
+														<span
+															className={`${styles.tab_icon} opensea mx-1`}
+														></span>
+													</a>
+												)}
+												{stampset.links_meta
+													?.twitter && (
+													<a
+														className={"diva"}
+														href={`https://twitter.com/@${stampset.links_meta?.twitter}`}
+														target="_blank"
+														rel="noreferrer"
+													>
+														<span
+															className={`${styles.tab_icon} twitter hover_op mx-1`}
+														></span>
+													</a>
+												)}
+												{stampset.links_meta
+													?.website && (
+													<a
+														className={"diva"}
+														href={`${stampset.links_meta?.website}`}
+														target="_blank"
+														rel="noreferrer"
+													>
+														<span
+															className={`${styles.tab_icon} new_tab hover_op mx-1`}
+														></span>
+													</a>
+												)}
 											</div>
 										</div>
 									</div>
