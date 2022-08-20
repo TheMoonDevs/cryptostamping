@@ -24,7 +24,6 @@ import { storeValue, retrieveValue } from "lib/browser_sync";
 import { setTopLoading } from "lib/redux/features/uiSlice";
 import { setLoggedIn } from "lib/redux/features/userSlice";
 
-
 function Layout(props) {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -108,7 +107,8 @@ function Layout(props) {
           authenticate={authenticate}
         />
         <PageLoader loading={isTopLoading} color="primary" />
-        {isInitialized && React.cloneElement(props.children, {Moralis, authenticate, user})}
+        {isInitialized &&
+          React.cloneElement(props.children, { Moralis, authenticate, user })}
         {props.footer && <Footer />}
       </main>
     </div>
