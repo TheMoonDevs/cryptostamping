@@ -1,0 +1,26 @@
+{
+  "token_address": "0x7f2d6878ae1bbb9977fa9db4a6809caa5694dec8",
+  "images_meta": {
+    "banner": "/images/cutouts/banner.jpg",
+    "logo": "/images/cutouts/logo.svg",
+    "feature": "/images/cutouts/feature.jpg"
+  },
+  "links_meta": {
+    "website": "https://cutoutsnft.com",
+    "discord": "XNNZ96b5V3",
+    "twitter": "cutoutsnft",
+    "instagram": "cutoutsnft"
+  },
+  "owner_meta": {
+    "name": "Cut-Outs",
+    "verified": true
+  },
+  "max_supply": 99,
+  "max_rarity": 99,
+  "avg_price": 5500000000000000,
+  "mint_price": 5500000000000000,
+  "title": "Cut-Outs",
+  "description": "Cut-Outs is the first ever digital stamp collection, the founders & builders of cryptostamping.",
+  "enabled": true,
+  "chain": "ropsten"
+}
