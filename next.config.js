@@ -32,11 +32,6 @@ module.exports = (phase, { defaultConfig }) => {
           destination: "/404",
           permanent: true,
         },
-        {
-          source: "/cutout/:path*",
-          destination: "/?id=:path*",
-          permanent: false,
-        },
       ];
     },
     target: "serverless",

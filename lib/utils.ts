@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, MutableRefObject } from "react";
 import { fromWei } from "web3-utils";
 import { DATE_START } from "lib/data";
 
@@ -24,8 +24,8 @@ export const refreshTokenSetup = (res) => {
 export const generateUID = () => {
   // I generate the UID from two parts here
   // to ensure the random number provide enough bits.
-  var firstPart = (Math.random() * 46656) | 0;
-  var secondPart = (Math.random() * 46656) | 0;
+  var firstPart: string|number = (Math.random() * 46656) | 0;
+  var secondPart: string|number = (Math.random() * 46656) | 0;
   firstPart = ("000" + firstPart.toString(36)).slice(-3);
   secondPart = ("000" + secondPart.toString(36)).slice(-3);
   return firstPart + secondPart;
@@ -34,7 +34,7 @@ export const generateUID = () => {
 export const getCurrentStampDay = () => {
   const date = new Date(DATE_START).setHours(0, 0, 0, 0);
   const now = new Date().setHours(0, 0, 0, 0);
-  const days = (now - date) / (1000 * 3600 * 24);
+  const days: string = (now - date) / (1000 * 3600 * 24) + "";
   return parseInt(days) + 1;
 };
 
@@ -84,7 +84,7 @@ export const useNextImageImageFade = (_className) => {
 
 export const useTimer = (dateString) => {
   const [timer, setTimer] = useState({});
-  let prevInterval = useRef();
+  let prevInterval: MutableRefObject<NodeJS.Timer> = useRef();
   const launchDate = new Date(dateString);
   const launchDateUTC = Date.UTC(
     launchDate.getUTCFullYear(),
@@ -223,11 +223,11 @@ export const getVideoDisplayLink = (num) => {
   return `/videos/${num}.mp4`;
 };
 
-export function prettyPrintDate(date_string, must) {
+export function prettyPrintDate(date_string?: string, must?: boolean) {
   if (!date_string) return "";
   const dt = new Date(date_string);
   if (!dt) return "";
-  const seconds = Math.floor((new Date() - dt) / 1000);
+  const seconds = Math.floor(((new Date()).getUTCMilliseconds() - dt.getUTCMilliseconds()) / 1000);
   let interval = seconds / 86400;
   // if more than a week ago print date
   if (interval > 7 || must || seconds < 0) {

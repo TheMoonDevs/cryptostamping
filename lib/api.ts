@@ -1,11 +1,8 @@
 import useSWR from "swr";
-import axios from "axios";
+import axios, {AxiosRequestConfig} from "axios";
 import "whatwg-fetch";
 import {
   IN_DEV_ENV,
-  PINATA_API_BASE_URL,
-  PINATA_API_KEY,
-  PINATA_API_SECRET,
   FRONTEND_BASE_URL,
   API_BASE_URL
 } from "lib/data";
@@ -56,22 +53,9 @@ export const useSimple = (TokenExists, url) => {
 };
 
 export async function getSimple(url) {
-  const options = {
+  const options: AxiosRequestConfig<any>= {
     url: url,
     method: "GET"
-  };
-  return axios(options);
-}
-
-export async function getPinataPostPromise(url, data) {
-  const options = {
-    url: PINATA_API_BASE_URL + url,
-    method: "POST",
-    data,
-    headers: {
-      pinata_api_key: PINATA_API_KEY,
-      pinata_secret_api_key: PINATA_API_SECRET,
-    },
   };
   return axios(options);
 }
@@ -100,7 +84,7 @@ export async function getAuthFormPromise(url, auth, formData) {
 }
 
 export async function getSimpleRequestPromise(url, cancelToken) {
-  const options = {
+  const options: AxiosRequestConfig<any> = {
     url: API_BASE_URL + url,
     method: "GET",
     headers: addAuth(),
@@ -110,7 +94,7 @@ export async function getSimpleRequestPromise(url, cancelToken) {
 }
 
 export async function getSimplePostPromise(url, data) {
-  const options = {
+  const options: AxiosRequestConfig<any> = {
     url: API_BASE_URL + url,
     method: "POST",
     data,
@@ -120,7 +104,7 @@ export async function getSimplePostPromise(url, data) {
 }
 
 export async function getSimpleUpdatePromise(url, data) {
-  const options = {
+  const options: AxiosRequestConfig<any> = {
     url: API_BASE_URL + url,
     method: "PUT",
     data,
@@ -130,7 +114,7 @@ export async function getSimpleUpdatePromise(url, data) {
 }
 
 export async function getSimpleDeletePromise(url) {
-  const options = {
+  const options: AxiosRequestConfig<any> = {
     url: API_BASE_URL + url,
     method: "DELETE",
     headers: addAuth(),

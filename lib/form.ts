@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import _debounce from "lodash/debounce";
 
-export const useInputText = (initialValue) => {
+export const useInputText = (initialValue?: any) => {
   const [value, setValue] = useState(initialValue);
 
   return {
@@ -17,7 +17,7 @@ export const useInputText = (initialValue) => {
   };
 };
 
-export const useInputObject = (initialValue, fields) => {
+export const useInputObject = (initialValue?:any, fields?: any) => {
   const [objectValue, setObjectValue] = useState(initialValue);
 
   const binding = useCallback(
