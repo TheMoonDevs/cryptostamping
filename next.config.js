@@ -19,6 +19,9 @@ module.exports = (phase, { defaultConfig }) => {
         NEXT_PUBLIC_MORALIS_SERVER_URL:
           process.env.NEXT_PUBLIC_MORALIS_TESTNET_URL,
       },
+      images: {
+        domains: [process.env.NEXT_PUBLIC_IMAGES_DOMAIN],
+      },
     };
   }
   return {
@@ -42,6 +45,9 @@ module.exports = (phase, { defaultConfig }) => {
       includePaths: [path.join(__dirname, "styles")],
       prependData: `@import "styles/variables.scss";`,
     },
+    images: {
+      domains: [process.env.NEXT_PUBLIC_IMAGES_DOMAIN],
+    },
     eslint: {
       // Warning: Dangerously allow production builds to successfully complete even if
       // your project has ESLint errors.
@@ -49,8 +55,7 @@ module.exports = (phase, { defaultConfig }) => {
     },
     env: {
       NEXT_PUBLIC_MORALIS_APP_ID: process.env.NEXT_PUBLIC_MORALIS_PROD_ID,
-      NEXT_PUBLIC_MORALIS_SERVER_URL:
-        process.env.NEXT_PUBLIC_MORALIS_PROD_URL,
+      NEXT_PUBLIC_MORALIS_SERVER_URL: process.env.NEXT_PUBLIC_MORALIS_PROD_URL,
     },
   };
 };

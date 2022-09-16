@@ -1,37 +1,26 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useMoralis } from "react-moralis";
 import Link from "next/link";
-
-import WhitelistSidebar from "components/modals/whitelist";
-import WalletSidebar from "components/modals/wallet_sidebar";
-import TrailerSidebar from "components/modals/trailer";
-import AuctionBlock from "components/home/auctionblock";
-import Header from "components/global/header";
+import Image from "next/image"
 import Footer from "components/global/footer";
-import Navigation from "components/global/navigation";
-import FAQ from "components/home/faq";
-
 import styles from "styles/pages/home.module.scss";
 import { FRONTEND_BASE_URL } from "lib/data";
-import { useImageFade } from "lib/utils";
-
-import { setLoggedIn } from "lib/redux/features/userSlice";
-import { setTopLoading } from "lib/redux/features/uiSlice";
+import { useImageFade, useNextImageImageFade } from "lib/utils";
+import { useAppDispatch, useAppSelector } from "lib/redux/store";
 
 export default function Soonpage({Moralis, authenticate, user}) {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
-	const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+	const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
 
 	return (
 		<div className={`${styles.container}`}>
 			<div className={styles.screen_one}>
-				<img 
-				className={styles.fill_banner}
+				<Image 
 				src="/images/cards/comingsoon1.png"
 				alt=""
-				{...useImageFade()} />
+				layout="fill"
+				{...useNextImageImageFade(styles.fill_banner)}
+				/>
 			</div>
 			<Footer />
 		</div>

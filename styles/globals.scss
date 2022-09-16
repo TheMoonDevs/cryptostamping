@@ -225,3 +225,12 @@ a:focus{
   opacity: 1;
   filter: $f-skyblue;
 }
+.opacity-0 {
+  opacity: 0;
+  transition: opacity 0.33s ease;
+}
+
+.opacity-1 {
+  opacity: 1;
+  transition: opacity 0.33s ease;
+}
