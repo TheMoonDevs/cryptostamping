@@ -1,61 +1,20 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useMoralis } from "react-moralis";
 import Link from "next/link";
 import Script from "next/script";
 
 import Footer from "components/global/footer";
-import Navigation from "components/global/navigation";
-import FAQ from "components/home/faq";
-
 import styles from "styles/pages/home.module.scss";
-import { FRONTEND_BASE_URL, mainFAQs } from "lib/data";
+import { FRONTEND_BASE_URL, mainFAQs } from "lib/data"
+import { backers,articles } from "lib/data";
+import { useAppDispatch, useAppSelector } from "lib/redux/store";
+import Image from "next/image";
+import { useImageFade, useNextImageImageFade } from "lib/utils";
 
-import { setLoggedIn } from "lib/redux/features/userSlice";
-import { setTopLoading } from "lib/redux/features/uiSlice";
+export default function Homepage({}) {
+	const dispatch = useAppDispatch();
 
-const backers = [
-	{
-		link: "https://cutoutsnft.com",
-		image: "/images/cutouts/logo_lettered.png",
-		description: "Founders & Builders",
-	},
-	{
-		link: "https://gitcoin.co/grants/4292/cryptostamping",
-		image: "/images/cutouts/logo_gitcoin.svg",
-		description: "Public Grant Donations",
-	},
-];
-const articles = [
-	{
-		link: "https://cutoutsnft.medium.com/cryptostamping-q4-2021-eb6fb86bd6af",
-		image: "https://miro.medium.com/max/875/1*hKiDFFM1eCpF4jeDGgtYYA.jpeg",
-		title: "Cryptostamping, Q4-2021",
-		description: `A brief overview of everything we worked on for
-								the past quarter and our future plans for 2022,
-								and the digital age of stamping system.`,
-	},
-	{
-		link: "https://cutoutsnft.medium.com/cryptostamping-how-to-install-a-beta-version-of-the-browser-extension-603e3b23b055",
-		image: "https://miro.medium.com/max/875/1*kSbEKpej4b9WUAVhVU_wrw.jpeg",
-		title: "β version of Extension",
-		description: `The beta program has just been launched and here’s how you can test the beta extension for chrome browser.`,
-	},
-	{
-		link: "https://cutoutsnft.medium.com/cryptostamping-is-live-on-gitcoin-co-4da18e09103f",
-		image: "https://miro.medium.com/max/1400/1*hbBFWBgVorlaL6uL-u7MgQ.jpeg",
-		title: "Live on gitcoin.co",
-		description: `Hey everyone, we are excited to share with you
-								that our grant is live on gitcoin and is
-								steadily having an increased set of donations on
-								a daily basis.`,
-	},
-];
-
-export default function Homepage({ Moralis, authenticate, user }) {
-	const dispatch = useDispatch();
-
-	const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+	const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
 
 	return (
 		<div className={`${styles.container}`}>
@@ -129,7 +88,7 @@ export default function Homepage({ Moralis, authenticate, user }) {
 			>
 				<img
 					className={`${styles.fill_image} ${styles.static_image} d-none d-md-block`}
-					src="/images/cryptostamping/screen_4.jpg"
+					src="https://cryptostamping.org/images/cryptostamping/screen_4.jpg"
 					alt=""
 				/>
 				<div className={`${styles.left_align} ${styles.box}`}>

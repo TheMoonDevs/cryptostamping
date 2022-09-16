@@ -1,27 +1,18 @@
-import { useState, useEffect, useRef, memo } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useMoralis } from "react-moralis";
+/* eslint-disable @next/next/no-img-element */
+import { useState, useEffect, useRef, memo, CSSProperties } from "react";
 import Link from "next/link";
-
 import { FixedSizeList as List, areEqual } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
-
-import Header from "components/global/header";
 import Footer from "components/global/footer";
-import Navigation from "components/global/navigation";
-import FAQ from "components/home/faq";
-
 import cardstyles from "styles/common/card.module.scss";
 import styles from "styles/pages/start.module.scss";
 import styles_home from "styles/pages/home.module.scss";
 import { FRONTEND_BASE_URL, usecaseCards } from "lib/data";
 import { useImageFade } from "lib/utils";
-
-import { setLoggedIn } from "lib/redux/features/userSlice";
-import { setTopLoading } from "lib/redux/features/uiSlice";
+import { useAppDispatch, useAppSelector } from "lib/redux/store";
 
 const renderCard = memo(
-	({ index, style, data }) => (
+	({ index, style, data }: {index: number, style:CSSProperties, data: any}) => (
 		<div className={cardstyles.card_container} style={style}>
 			<div className={cardstyles.card}>
 				<img
@@ -41,11 +32,11 @@ const renderCard = memo(
 );
 renderCard.displayName = "card";
 
-export default function Homepage({ Moralis, authenticate, user }) {
-	const dispatch = useDispatch();
+export default function IntroPage({ Moralis, authenticate, user }) {
+	const dispatch = useAppDispatch();
 	const listRef = useRef();
 
-	const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+	const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
 
 	return (
 		<div className={`${styles.container} page_wrapper`}>

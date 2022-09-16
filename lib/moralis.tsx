@@ -1,4 +1,14 @@
-export const MoralisQuery = (Moralis, queryParams) => {
+export interface MoralisQueryParams {
+  containedIn?: {name:string, value:any}[], 
+  equalTo?: {name:string, value:any}[],
+  sort?: {name:string, order: string},
+  limit?: number,
+  matches?: {name: string, value: any, type: string}[],
+  exec?: string,
+  className: string,
+}
+
+export const MoralisQuery = (Moralis, queryParams:MoralisQueryParams ) => {
   const moralisClass = Moralis.Object.extend(queryParams.className);
   const query = new Moralis.Query(moralisClass);
   if (queryParams.containedIn) {
