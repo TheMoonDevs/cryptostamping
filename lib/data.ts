@@ -147,7 +147,7 @@ export const getChainObject = (_chainId, type) => {
   }
 };
 
-export const getChainFromSymbol = (_symbol, type) => {
+export const getChainFromSymbol = (_symbol, type?) => {
   if (type === "mainnet") {
     for (const chainObject of availableMainChains) {
       if (chainObject.symbol === _symbol) return chainObject;

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState, useEffect, useRef, memo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
@@ -5,7 +6,7 @@ import Link from "next/link";
 
 import { FixedSizeList as List, areEqual } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
-import { useMoralisQuery } from "react-moralis";
+import { useMoralis, useMoralisQuery } from "react-moralis";
 
 import Tooltip from "components/modals/tooltip";
 import PageLoader from "components/global/pageloader";
@@ -151,9 +152,10 @@ const StampsetBar = ({ stampset }) => {
 	);
 };
 
-export default function ScanPage({ Moralis, authenticate, user }) {
+export default function ScanPage({}) {
 	const dispatch = useDispatch();
 	const router = useRouter();
+	const {Moralis, isInitialized} = useMoralis();
 
 	const filters = [...availableMainChains, ...availableTestChains];
 	const { chain_id } = router.query;
@@ -176,6 +178,7 @@ export default function ScanPage({ Moralis, authenticate, user }) {
 	}, [chain_id]);
 
 	useEffect(() => {
+		if(!isInitialized) return;
 		MoralisQuery(Moralis, {
 				className: "Stamping",
 				equalTo: [
@@ -190,7 +193,7 @@ export default function ScanPage({ Moralis, authenticate, user }) {
 					setStampingCount(response);
 				})
 				.catch((error) => {});
-	},[currentFilter])
+	},[currentFilter, Moralis, isInitialized])
 
 	const {
 		data: stamping_data,
@@ -204,7 +207,7 @@ export default function ScanPage({ Moralis, authenticate, user }) {
 			query.limit(10);
 			return query;
 		},
-		[currentFilter]
+		[currentFilter,isInitialized]
 	);
 
 	useEffect(() => {
@@ -225,7 +228,7 @@ export default function ScanPage({ Moralis, authenticate, user }) {
 			query.limit(10);
 			return query;
 		},
-		[currentFilter]
+		[currentFilter,isInitialized]
 	);
 	useEffect(() => {
 		if (stampsets_data.length <= 0) setStampsets([]);
@@ -379,7 +382,7 @@ export async function getServerSideProps({params}) {
 	const header = {
 		title: `Scanner | Search Stamp Collections, Stamping History, User Holdings`,
 		description: `Etherscan for all things stamping related.`,
-		url: `${FRONTEND_BASE_URL}/scan`,
+		url: `${FRONTEND_BASE_URL}/scan/${params.chain_id}`,
 		robots: "index,follow",
 	};
 

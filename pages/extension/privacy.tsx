@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { useState, useEffect, useRef } from "react";
 
 import styles from "styles/pages/home.module.scss";
@@ -23,7 +24,7 @@ export default function PrivacyPage({}) {
 				Policy has been created with the help of the{" "}
 				<a
 					href="https://www.privacypolicies.com/blog/privacy-policy-template/"
-					target="_blank"
+					target="_blank" rel="noreferrer"
 				>
 					Privacy Policy Template
 				</a>

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState, useEffect, useRef, memo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
@@ -6,7 +7,7 @@ import Blockies from "react-blockies";
 
 import { FixedSizeList as List, areEqual } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
-import { useMoralisQuery } from "react-moralis";
+import { useMoralis, useMoralisQuery } from "react-moralis";
 
 import Tooltip from "components/modals/tooltip";
 import PageLoader from "components/global/pageloader";
@@ -29,6 +30,7 @@ import {
 	getChainObject,
 	getChainFromSymbol,
 	isTestnet,
+	ChainProps,
 } from "lib/data";
 import {
 	useImageFade,
@@ -38,6 +40,7 @@ import {
 	printPrice,
 } from "lib/utils";
 import { MoralisQuery } from "lib/moralis";
+import { useAppDispatch } from "lib/redux/store";
 
 const StampCard = ({ stamp, stampset }) => {
 	const fadeBinding = useImageFade();
@@ -317,12 +320,13 @@ const StampingPost = ({ stamping, stampset }) => {
 	);
 };
 
-export default function UserPage({ Moralis, authenticate, user }) {
-	const dispatch = useDispatch();
+export default function UserPage({ }) {
+	const dispatch = useAppDispatch();
 	const router = useRouter();
+	const {Moralis, isInitialized} = useMoralis();
 
-	const filters = [...availableMainChains, ...availableTestChains];
-	const { tab, user_address, testnet } = router.query;
+	const filters:ChainProps[] = [...availableMainChains, ...availableTestChains];
+	const { tab, user_address, testnet }= router.query;
 	const tabs = [
 		{ name: "Stamping History", logo: styles.icon_history, id: "history" },
 		{ name: "Explore NFTs", logo: styles.icon_explore, id: "explore" },
@@ -355,7 +359,16 @@ export default function UserPage({ Moralis, authenticate, user }) {
 	} = useInputText();
 
 	useEffect(() => {
-		setCurrentTab(getTabFromId(tab));
+		const _getTabFromId = (tab_in) => {
+			for (const _tab of tabs) {
+				if (_tab.id === tab_in) {
+					return _tab;
+				}
+			}
+			return tabs[0];
+		};
+		setCurrentTab(_getTabFromId(tab));
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [tab]);
 
 	useEffect(() => {
@@ -366,7 +379,7 @@ export default function UserPage({ Moralis, authenticate, user }) {
 				matches: [
 					{
 						name: "user_address",
-						value: user_address.toUpperCase(),
+						value: user_address.toString().toUpperCase(),
 						type: "i",
 					},
 				],
@@ -383,7 +396,7 @@ export default function UserPage({ Moralis, authenticate, user }) {
 				exec: "find",
 			})
 				.then((response) => {
-					setStampings(Array.from(response, (x) => x.toJSON()));
+					setStampings(Array.from(response, (x:any) => x.toJSON()));
 				})
 				.catch((error) => {});
 
@@ -392,7 +405,7 @@ export default function UserPage({ Moralis, authenticate, user }) {
 				matches: [
 					{
 						name: "user_address",
-						value: user_address.toUpperCase(),
+						value: user_address.toString().toUpperCase(),
 						type: "i",
 					},
 				],
@@ -417,7 +430,7 @@ export default function UserPage({ Moralis, authenticate, user }) {
 				matches: [
 					{
 						name: "owner_address",
-						value: user_address.toUpperCase(),
+						value: user_address.toString().toUpperCase(),
 						type: "i",
 					},
 				],
@@ -434,7 +447,7 @@ export default function UserPage({ Moralis, authenticate, user }) {
 				exec: "find",
 			})
 				.then((response) => {
-					setStamps(Array.from(response, (x) => x.toJSON()));
+					setStamps(Array.from(response, (x:any) => x.toJSON()));
 				})
 				.catch((error) => {});
 			MoralisQuery(Moralis, {
@@ -442,7 +455,7 @@ export default function UserPage({ Moralis, authenticate, user }) {
 				matches: [
 					{
 						name: "owner_address",
-						value: user_address.toUpperCase(),
+						value: user_address.toString().toUpperCase(),
 						type: "i",
 					},
 				],
@@ -468,7 +481,7 @@ export default function UserPage({ Moralis, authenticate, user }) {
 				matches: [
 					{
 						name: "wallet_address",
-						value: user_address.toUpperCase(),
+						value: user_address.toString().toUpperCase(),
 						type: "i",
 					},
 				],
@@ -480,7 +493,7 @@ export default function UserPage({ Moralis, authenticate, user }) {
 				})
 				.catch((error) => {});
 		}
-	}, [user_address, testnet]);
+	}, [user_address, testnet, isInitialized, Moralis]);
 
 	const getLogoForSymbol = (_symbol) => {
 		for (const chain of filters) {
@@ -494,7 +507,7 @@ export default function UserPage({ Moralis, authenticate, user }) {
 			{testnet && (
 				<div className={styles.header_toast}>
 					<h4 className={`${styles.tag_value} ${styles.med}`}>
-						You're currently viewing in Testnet Mode.
+						You`&apos;re currently viewing in Testnet Mode.
 					</h4>
 					<Link
 						href={`/scan/user/${user_address}?${
@@ -554,7 +567,7 @@ export default function UserPage({ Moralis, authenticate, user }) {
 									className={`${styles.button_item} ${styles.vert} ${styles.bottom}`}
 								>
 									<Blockies
-										seed={user_address?.toLowerCase()}
+										seed={user_address?.toString().toLowerCase()}
 										size={8}
 										scale={3}
 										className={styles.tag_logo}

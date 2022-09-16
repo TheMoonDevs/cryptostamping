@@ -12,11 +12,12 @@ import Footer from "components/global/footer";
 import { MOLARIS_APP_ID, MOLARIS_SERVER_URL } from "lib/data";
 import { useAppDispatch, useAppSelector, store } from "lib/redux/store";
 import { AppProps } from "next/dist/shared/lib/router/router";
-import { MoralisProvider } from "react-moralis";
+import { MoralisProvider, useMoralis } from "react-moralis";
 
 function Layout(props: any) {
   const router = useRouter();
   const dispatch = useAppDispatch();
+  const {isInitialized} = useMoralis();
 
   const isTopLoading = useAppSelector((state) => state.ui.isTopLoading);
   const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
@@ -29,7 +30,7 @@ function Layout(props: any) {
           dispatch={dispatch}
         />
         <PageLoader loading={isTopLoading} color="primary" />
-        {props.children}
+        {isInitialized ? props.children : (props.header.moralis ? <div></div> : props.children)}
         {props.footer && <Footer />}
       </main>
     </div>

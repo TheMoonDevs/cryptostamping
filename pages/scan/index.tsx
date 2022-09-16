@@ -1,15 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState, useEffect, useRef, memo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import Link from "next/link";
-
-import { FixedSizeList as List, areEqual } from "react-window";
-import AutoSizer from "react-virtualized-auto-sizer";
-import { useMoralisQuery } from "react-moralis";
-
+import { useMoralis, useMoralisQuery } from "react-moralis";
 import Tooltip from "components/modals/tooltip";
-import PageLoader from "components/global/pageloader";
-
 import cardstyles from "styles/common/card.module.scss";
 import card2styles from "styles/common/card2.module.scss";
 import styles from "styles/pages/scan.module.scss";
@@ -25,6 +20,7 @@ import {
 	getChainObject,
 	getChainFromSymbol,
 	isTestnet,
+	ChainProps,
 } from "lib/data";
 import {
 	useImageFade,
@@ -33,6 +29,7 @@ import {
 	getRandPrice,
 } from "lib/utils";
 import { MoralisQuery } from "lib/moralis";
+import { useAppDispatch } from "lib/redux/store";
 
 const StampingBar = ({ stamping }) => {
 	const fadeBinding = useImageFade();
@@ -151,11 +148,12 @@ const StampsetBar = ({ stampset }) => {
 	);
 };
 
-export default function ScanPage({ Moralis, authenticate, user }) {
-	const dispatch = useDispatch();
+export default function ScanPage({}) {
+	const dispatch = useAppDispatch();
+	const { Moralis, isInitialized } = useMoralis();
 	const router = useRouter();
 
-	const filters = [...availableMainChains, ...availableTestChains];
+	const filters:ChainProps[] = [...availableMainChains, ...availableTestChains];
 	const { chain_id } = router.query;
 
 	const {
@@ -176,6 +174,7 @@ export default function ScanPage({ Moralis, authenticate, user }) {
 	}, [chain_id]);
 
 	useEffect(() => {
+		if(!isInitialized) return;
 		MoralisQuery(Moralis, {
 				className: "Stamping",
 				equalTo: [
@@ -190,7 +189,7 @@ export default function ScanPage({ Moralis, authenticate, user }) {
 					setStampingCount(response);
 				})
 				.catch((error) => {});
-	},[currentFilter])
+	},[currentFilter, Moralis, isInitialized])
 
 	const {
 		data: stamping_data,
@@ -204,7 +203,7 @@ export default function ScanPage({ Moralis, authenticate, user }) {
 			query.limit(10);
 			return query;
 		},
-		[currentFilter]
+		[currentFilter,isInitialized]
 	);
 
 	useEffect(() => {
@@ -225,7 +224,7 @@ export default function ScanPage({ Moralis, authenticate, user }) {
 			query.limit(10);
 			return query;
 		},
-		[currentFilter]
+		[currentFilter,isInitialized]
 	);
 	useEffect(() => {
 		if (stampsets_data.length <= 0) setStampsets([]);
@@ -379,8 +378,9 @@ export async function getServerSideProps({params}) {
 	const header = {
 		title: `Scanner | Search Stamp Collections, Stamping History, User Holdings`,
 		description: `Etherscan for all things stamping related.`,
-		url: `${FRONTEND_BASE_URL}/scan/${params.chain_id}`,
+		url: `${FRONTEND_BASE_URL}/scan`,
 		robots: "index,follow",
+		moralis: true,
 	};
 
 	return {
