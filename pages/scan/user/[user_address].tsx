@@ -372,6 +372,7 @@ export default function UserPage({ }) {
 	}, [tab]);
 
 	useEffect(() => {
+		if(!isInitialized) return;
 		if (user_address != null) {
 			/* STAMPINGS & COUNT */
 			MoralisQuery(Moralis, {
@@ -379,7 +380,7 @@ export default function UserPage({ }) {
 				matches: [
 					{
 						name: "user_address",
-						value: user_address.toString().toUpperCase(),
+						value: user_address.toString(),
 						type: "i",
 					},
 				],
@@ -405,7 +406,7 @@ export default function UserPage({ }) {
 				matches: [
 					{
 						name: "user_address",
-						value: user_address.toString().toUpperCase(),
+						value: user_address.toString(),
 						type: "i",
 					},
 				],
@@ -430,7 +431,7 @@ export default function UserPage({ }) {
 				matches: [
 					{
 						name: "owner_address",
-						value: user_address.toString().toUpperCase(),
+						value: user_address.toString(),
 						type: "i",
 					},
 				],
@@ -455,7 +456,7 @@ export default function UserPage({ }) {
 				matches: [
 					{
 						name: "owner_address",
-						value: user_address.toString().toUpperCase(),
+						value: user_address.toString(),
 						type: "i",
 					},
 				],
@@ -481,7 +482,7 @@ export default function UserPage({ }) {
 				matches: [
 					{
 						name: "wallet_address",
-						value: user_address.toString().toUpperCase(),
+						value: user_address.toString(),
 						type: "i",
 					},
 				],

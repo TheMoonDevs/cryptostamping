@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState, useEffect, useRef, memo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
@@ -5,7 +6,7 @@ import Link from "next/link";
 
 import { FixedSizeList as List, areEqual } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
-import { useMoralisQuery } from "react-moralis";
+import { useMoralis, useMoralisQuery } from "react-moralis";
 
 import Tooltip from "components/modals/tooltip";
 import PageLoader from "components/global/pageloader";
@@ -35,6 +36,7 @@ import {
 	printPrice,
 } from "lib/utils";
 import { MoralisQuery } from "lib/moralis";
+import { useAppDispatch } from "lib/redux/store";
 
 const StampCard = ({ stamp, stampset, currentChain }) => {
 	const fadeBinding = useImageFade();
@@ -203,9 +205,10 @@ const StampingPost = ({ stamping, stampset, currentChain }) => {
 	);
 };
 
-export default function CollectionPage({ Moralis, authenticate, user }) {
-	const dispatch = useDispatch();
+export default function CollectionPage({}) {
+	const dispatch = useAppDispatch();
 	const router = useRouter();
+	const {Moralis, isInitialized} = useMoralis();
 
 	const filters = [...availableMainChains, ...availableTestChains];
 	const { tab, chain_id, token_address } = router.query;
@@ -232,7 +235,7 @@ export default function CollectionPage({ Moralis, authenticate, user }) {
 		chain_obj || availableMainChains[0]
 	);
 	const [currentTab, setCurrentTab] = useState(getTabFromId(tab));
-	const [stampset, setStampset] = useState([]);
+	const [stampset, setStampset]: [stampset:any,setStampset:any] = useState({});
 	const [stamps, setStamps] = useState([]);
 	const [stampings, setStampings] = useState([]);
 	const {
@@ -247,10 +250,20 @@ export default function CollectionPage({ Moralis, authenticate, user }) {
 	}, [chain_id]);
 
 	useEffect(() => {
-		setCurrentTab(getTabFromId(tab));
+		const _getTabFromId = (tab_in) => {
+			for (const _tab of tabs) {
+				if (_tab.id === tab_in) {
+					return _tab;
+				}
+			}
+			return tabs[0];
+		};
+		setCurrentTab(_getTabFromId(tab));
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [tab]);
 
 	useEffect(() => {
+		if(!isInitialized) return;
 		if (token_address != null) {
 			console.log(currentChain?.symbol, token_address);
 			MoralisQuery(Moralis, {
@@ -259,7 +272,7 @@ export default function CollectionPage({ Moralis, authenticate, user }) {
 					{ name: "chain", value: currentChain?.symbol || "all" },
 					{
 						name: "token_address",
-						value: token_address.toUpperCase(),
+						value: token_address.toString().toUpperCase(),
 					},
 				],
 				sort: { order: "descending", name: "createdAt" },
@@ -268,7 +281,7 @@ export default function CollectionPage({ Moralis, authenticate, user }) {
 			})
 				.then((response) => {
 					console.log(response);
-					setStampings(Array.from(response, (x) => x.toJSON()));
+					setStampings(Array.from(response, (x:any) => x.toJSON()));
 				})
 				.catch((error) => {});
 			MoralisQuery(Moralis, {
@@ -277,7 +290,7 @@ export default function CollectionPage({ Moralis, authenticate, user }) {
 					{ name: "chain", value: currentChain?.symbol || "all" },
 				],
 				matches: [
-					{ name: "token_address", value: token_address.toUpperCase(), type: "i" },
+					{ name: "token_address", value: token_address.toString().toUpperCase(), type: "i" },
 				],
 				sort: { order: "descending", name: "createdAt" },
 				limit: 30,
@@ -288,7 +301,7 @@ export default function CollectionPage({ Moralis, authenticate, user }) {
 				})
 				.catch((error) => {});
 		}
-	}, [currentChain, token_address]);
+	}, [currentChain, token_address, isInitialized, Moralis]);
 
 	const {
 		data: stamps_data,
@@ -298,12 +311,12 @@ export default function CollectionPage({ Moralis, authenticate, user }) {
 		"Stamp",
 		(query) => {
 			query.equalTo("chain", currentChain ? currentChain.symbol : "all");
-			query.equalTo("token_address", token_address.toUpperCase());
+			query.equalTo("token_address", token_address.toString().toUpperCase());
 			query.descending("createdAt");
 			query.limit(30);
 			return query;
 		},
-		[currentChain, token_address]
+		[currentChain, token_address, isInitialized]
 	);
 
 	useEffect(() => {
@@ -517,7 +530,7 @@ export default function CollectionPage({ Moralis, authenticate, user }) {
 								key={"official"}
 								href={`${stampset.links_meta?.website}`}
 								target="_blank"
-								className={`diva ${styles.tab_item}`}
+								className={`diva ${styles.tab_item}`} rel="noreferrer"
 							>
 								<span
 									className={`${styles.tab_icon} ${styles.icon_open}`}
