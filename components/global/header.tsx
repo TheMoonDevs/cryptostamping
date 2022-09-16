@@ -1,22 +1,16 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useSelector, useDispatch } from "react-redux";
 import { useMoralis } from "react-moralis";
-
 import progress_styles from "styles/common/progress.module.scss";
 import styles from "components/global/header.module.scss";
-
 import Tooltip from "components/modals/tooltip";
-
-import { IN_DEV_ENV } from "lib/data";
-import { setLoggedIn } from "lib/redux/features/userSlice";
-import { setSidebarOpen, setTopLoading } from "lib/redux/features/uiSlice";
+import { useAppSelector } from "lib/redux/store";
 
 function Header({ dispatch }) {
   const router = useRouter();
-  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
-  const isTopLoading = useSelector((state) => state.ui.isTopLoading);
+  const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
+  const isTopLoading = useAppSelector((state) => state.ui.isTopLoading);
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
